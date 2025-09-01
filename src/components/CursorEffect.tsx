@@ -39,6 +39,7 @@ const CursorEffect: React.FC = () => {
         }}
       >
         <div className="w-5 h-5 rounded-full bg-cyan-400 opacity-80 blur-sm"></div>
+
       </div>
       <div
         className="fixed pointer-events-none z-50"
