@@ -8,15 +8,16 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Chatbot from './components/Chatbot';
 
 function App() {
   useEffect(() => {
     // Update document title
     document.title = 'Nachiket Shinde';
-    
+
     // Add smooth scrolling behavior
     document.documentElement.style.scrollBehavior = 'smooth';
-    
+
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
     };
@@ -27,7 +28,7 @@ function App() {
       <CursorEffect />
       <ScrollProgress />
       <Navigation />
-      
+
       <main className="relative">
         <Hero />
         <About />
@@ -35,8 +36,9 @@ function App() {
         <Projects />
         <Contact />
       </main>
-      
+
       <Footer />
+      <Chatbot />
     </div>
   );
 }
