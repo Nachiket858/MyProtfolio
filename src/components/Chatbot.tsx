@@ -48,13 +48,15 @@ const Chatbot: React.FC = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('/api/ask', {
+            const response = await fetch('api/ask', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ question: userMessage.text }),
             });
+            console.log(response);
+            
 
             if (!response.ok) {
                 throw new Error('Failed to get response');
