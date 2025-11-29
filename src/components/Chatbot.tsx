@@ -93,7 +93,7 @@ const Chatbot: React.FC = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('/api/ask', {
+            const response = await fetch('https://my-chatbot-2adi.onrender.com/ask', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
