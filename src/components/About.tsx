@@ -17,43 +17,43 @@ const About: React.FC = () => {
     { name: 'Web Devlopment', level: 70, color: 'from-orange-200 to-red-500' },
   ];
 
-const timeline = [
-  {
-    year: '2026',
-    title: 'B.Tech in Computer Science & Engineering',
-    company: 'CSMSS Chh. Shahu College of Engineering (DBATU)',
-    description: 'Graduating with strong foundations in AI/ML, backend systems, and full-stack development.',
-    icon: Award,
-  },
-  {
-    year: '2025',
-    title: 'GSSoC Contributor',
-    company: 'GirlScript Summer of Code',
-    description: 'Contributed to open-source web projects using Python and Generative AI.',
-    icon: Zap,
-  },
-  {
-    year: '2025',
-    title: 'NPTEL Star',
-    company: 'NPTEL, IIT Madras',
-    description: 'Recognized as an NPTEL Star for outstanding performance in multiple Computer Science and Engineering certification courses offered by different IITs.',
-    icon: Award,
-  },
-  {
-    year: '2025',
-    title: 'AI Developer',
-    company: 'KodeNeurons',
-    description: 'Worked on AI projects like Face Recognition Voting System, Price Comparison Tool, and AI-based 3D Floor Plan Generator.',
-    icon: Code,
-  },
-  {
-    year: '2024',
-    title: 'SIH Participant',
-    company: 'Smart India Hackathon',
-    description: 'Participated in Smart India Hackathon, contributing innovative AI-driven solutions to real-world problem statements.',
-    icon: Zap,
-  },
-];
+  const timeline = [
+    {
+      year: '2026',
+      title: 'B.Tech in Computer Science & Engineering',
+      company: 'CSMSS Chh. Shahu College of Engineering (DBATU)',
+      description: 'Graduating with strong foundations in AI/ML, backend systems, and full-stack development.',
+      icon: Award,
+    },
+    {
+      year: '2025',
+      title: 'GSSoC Contributor',
+      company: 'GirlScript Summer of Code',
+      description: 'Contributed to open-source web projects using Python and Generative AI.',
+      icon: Zap,
+    },
+    {
+      year: '2025',
+      title: 'NPTEL Star',
+      company: 'NPTEL, IIT Madras',
+      description: 'Recognized as an NPTEL Star for outstanding performance in multiple Computer Science and Engineering certification courses offered by different IITs.',
+      icon: Award,
+    },
+    {
+      year: '2025',
+      title: 'AI Developer',
+      company: 'KodeNeurons',
+      description: 'Worked on AI projects like Face Recognition Voting System, Price Comparison Tool, and AI-based 3D Floor Plan Generator.',
+      icon: Code,
+    },
+    {
+      year: '2024',
+      title: 'SIH Participant',
+      company: 'Smart India Hackathon',
+      description: 'Participated in Smart India Hackathon, contributing innovative AI-driven solutions to real-world problem statements.',
+      icon: Zap,
+    },
+  ];
 
   return (
     <section id="about" className="py-20 bg-gradient-to-b from-black to-gray-900">
@@ -75,9 +75,9 @@ const timeline = [
               <div className="relative bg-black/50 backdrop-blur-sm p-8 rounded-lg border border-gray-800">
                 <h3 className="text-2xl font-bold text-white mb-4">My Journey</h3>
                 <p className="text-gray-300 leading-relaxed mb-4">
-I'm Nachiket Shinde, a Computer Science undergrad passionate about machine learning, deep learning, and generative AI.                </p>
+                  I'm Nachiket Shinde, a Computer Science undergrad passionate about machine learning, deep learning, and generative AI.                </p>
                 <p className="text-gray-300 leading-relaxed">
-I've built projects like a Facial Recognition-Based Voting System, PyCodeML, Dream House Architecture (AI-powered 3D floor plan generator), Price Comparin (intelligent price comparison system), Sentify (sentiment analysis platform), and a Podcast Summarizer (NLP-based summarization and key takeaways tool), focusing on creating real-world AI-driven solutions.                </p>
+                  I've built projects like a Facial Recognition-Based Voting System, PyCodeML, Dream House Architecture (AI-powered 3D floor plan generator), Price Comparin (intelligent price comparison system), Sentify (sentiment analysis platform), and a Podcast Summarizer (NLP-based summarization and key takeaways tool), focusing on creating real-world AI-driven solutions.                </p>
               </div>
             </div>
 
@@ -108,7 +108,7 @@ I've built projects like a Facial Recognition-Based Voting System, PyCodeML, Dre
             <h3 className="text-2xl font-bold text-white mb-8">Timeline</h3>
             {timeline.map((item, index) => (
               <div
-                key={item.year}
+                key={`${item.year}-${index}`}
                 className="relative flex items-start space-x-4 group"
                 style={{ animationDelay: `${index * 0.3}s` }}
               >

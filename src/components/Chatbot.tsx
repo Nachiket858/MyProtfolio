@@ -14,7 +14,7 @@ const Chatbot: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([
         {
             id: '1',
-            text: "Hi! I'm Nachiket's AI assistant. Ask me anything about his skills, projects, or experience!",
+            text: "Hi! I'm Nachiket's AI assistant. Ask me anything about his skills, projects, or experience! \n\n(Note: The first response might take up to 50 seconds to load as the server wakes up.)",
             sender: 'bot',
             timestamp: new Date(),
         },
@@ -30,6 +30,51 @@ const Chatbot: React.FC = () => {
     useEffect(() => {
         scrollToBottom();
     }, [messages, isOpen]);
+
+    const formatMessage = (text: string) => {
+        // Simple formatter for bold and lists
+        let formatted = text;
+
+        // Bold: **text** -> <strong>text</strong>
+        formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+        // Lists: * item -> <li>item</li> (wrapped in ul later if needed, but simple replacement works for visual)
+        // We'll replace newlines with <br> and handle list items specifically
+
+        const lines = formatted.split('\n');
+        const processedLines = lines.map(line => {
+            if (line.trim().startsWith('* ')) {
+                return `<li>${line.trim().substring(2)}</li>`;
+            }
+            return line;
+        });
+
+        // Wrap consecutive li elements in ul
+        let result = '';
+        let inList = false;
+
+        processedLines.forEach(line => {
+            if (line.startsWith('<li>')) {
+                if (!inList) {
+                    result += '<ul class="list-disc pl-4 mb-2">';
+                    inList = true;
+                }
+                result += line;
+            } else {
+                if (inList) {
+                    result += '</ul>';
+                    inList = false;
+                }
+                result += line + '<br/>';
+            }
+        });
+
+        if (inList) {
+            result += '</ul>';
+        }
+
+        return result;
+    };
 
     const handleSendMessage = async (e?: React.FormEvent) => {
         e?.preventDefault();
@@ -48,25 +93,38 @@ const Chatbot: React.FC = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('https://my-chatbot-2adi.onrender.com/ask', {
+            const response = await fetch('/api/ask', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ question: userMessage.text }),
             });
-            console.log(response);
-            
+
+            console.log('Response status:', response.status);
 
             if (!response.ok) {
-                throw new Error('Failed to get response');
+                throw new Error(`Server error: ${response.status}`);
             }
 
-            const data = await response.json();
+            const contentType = response.headers.get('content-type');
+            let botText = '';
+
+            if (contentType && contentType.includes('application/json')) {
+                const data = await response.json();
+                botText = data.answer || data.message || JSON.stringify(data);
+            } else {
+                botText = await response.text();
+            }
+
+            // Clean up quotes if the text is just a quoted string
+            if (botText.startsWith('"') && botText.endsWith('"')) {
+                botText = botText.slice(1, -1);
+            }
 
             const botMessage: Message = {
                 id: (Date.now() + 1).toString(),
-                text: data.answer || "I'm sorry, I couldn't process that request.",
+                text: botText || "I'm sorry, I couldn't process that request.",
                 sender: 'bot',
                 timestamp: new Date(),
             };
@@ -76,7 +134,7 @@ const Chatbot: React.FC = () => {
             console.error('Error sending message:', error);
             const errorMessage: Message = {
                 id: (Date.now() + 1).toString(),
-                text: "Sorry, I'm having trouble connecting to the server right now. Please try again later.",
+                text: `Error: ${error instanceof Error ? error.message : 'Unknown error'}`,
                 sender: 'bot',
                 timestamp: new Date(),
             };
@@ -182,11 +240,18 @@ const Chatbot: React.FC = () => {
                                 >
                                     <div
                                         className={`max-w-[80%] p-3 rounded-2xl ${msg.sender === 'user'
-                                                ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-br-none'
-                                                : 'bg-gray-800 text-gray-200 rounded-bl-none border border-gray-700'
+                                            ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-br-none'
+                                            : 'bg-gray-800 text-gray-200 rounded-bl-none border border-gray-700'
                                             }`}
                                     >
-                                        <p className="text-sm leading-relaxed">{msg.text}</p>
+                                        {msg.sender === 'user' ? (
+                                            <p className="text-sm leading-relaxed">{msg.text}</p>
+                                        ) : (
+                                            <div
+                                                className="text-sm leading-relaxed"
+                                                dangerouslySetInnerHTML={{ __html: formatMessage(msg.text) }}
+                                            />
+                                        )}
                                         <p className="text-[10px] opacity-50 mt-1 text-right">
                                             {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                         </p>
@@ -205,8 +270,8 @@ const Chatbot: React.FC = () => {
                         </div>
 
                         {/* Input Area */}
-                        <form onSubmit={handleSendMessage} className="p-4 bg-gray-900 border-t border-gray-800">
-                            <div className="flex items-center space-x-2">
+                        <div className="p-4 bg-gray-900 border-t border-gray-800">
+                            <form onSubmit={handleSendMessage} className="flex items-center space-x-2 mb-2">
                                 <input
                                     type="text"
                                     value={inputValue}
@@ -221,8 +286,13 @@ const Chatbot: React.FC = () => {
                                 >
                                     <Send size={18} />
                                 </button>
+                            </form>
+                            <div className="text-center">
+                                <p className="text-[10px] text-gray-500 flex items-center justify-center gap-1">
+                                    <Sparkles size={8} /> Powered by Gemini
+                                </p>
                             </div>
-                        </form>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
