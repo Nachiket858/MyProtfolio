@@ -58,7 +58,7 @@ const projects = [
   {
     id: 5,
     title: 'Face Voting System',
-    description: '',
+    description: 'A facial recognition-based voting system that authenticates voters using OpenCV, ensuring secure and fraud-proof digital voting with MongoDB storage.',
     // image: faceVoteImg,
     tech: ['Flask', 'python', 'MongoDB','js','OpenCv' ],
     github: 'https://github.com/Nachiket858/face_voting_system',
@@ -78,7 +78,7 @@ const projects = [
   {
     id: 7,
     title: 'Chatbot Assistant',
-    description: '',
+    description: 'An AI-powered chatbot assistant built with LangChain, Gemini, and a vector database for context-aware, retrieval-augmented conversations.',
     // image: chatbotImg,
     tech: ['Langchain', ' Flask','python','Gemini', 'vector database'],
     github: '',
@@ -120,6 +120,9 @@ const projects = [
                     <img
                       src={project.image}
                       alt={project.title}
+                      loading="lazy"
+                      width="640"
+                      height="360"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -160,18 +163,24 @@ const projects = [
                     <div className="flex space-x-3">
                       <a
                         href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View ${project.title} source code on GitHub`}
                         className="flex items-center space-x-1 text-gray-400 hover:text-white transition-colors duration-300"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Github size={16} />
+                        <Github size={16} aria-hidden="true" />
                         <span className="text-sm">Code</span>
                       </a>
                       <a
                         href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View ${project.title} live demo`}
                         className="flex items-center space-x-1 text-gray-400 hover:text-cyan-400 transition-colors duration-300"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <ExternalLink size={16} />
+                        <ExternalLink size={16} aria-hidden="true" />
                         <span className="text-sm">Live</span>
                       </a>
                     </div>
@@ -198,7 +207,8 @@ const projects = [
               <div className="aspect-video overflow-hidden rounded-t-xl">
                 <img
                   src={selectedProject.image}
-                  alt={selectedProject.title}
+                  alt={`${selectedProject.title} project screenshot`}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>

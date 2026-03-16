@@ -36,12 +36,12 @@ const Hero: React.FC = () => {
 
       <div className="text-center z-10 px-4">
         {/* Name */}
-        <div className="mb-8">
+        <h1 className="mb-8">
           <GlitchText
             text="NACHIKET SHINDE"
             className="text-6xl md:text-8xl font-bold font-mono bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
           />
-        </div>
+        </h1>
 
         {/* Tagline */}
         <div className="mb-8 overflow-hidden">
@@ -74,10 +74,11 @@ const Hero: React.FC = () => {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Visit Nachiket Shinde's ${social.label} profile`}
               className="p-3 bg-black/20 backdrop-blur-sm rounded-full border border-cyan-400/20 text-gray-400 hover:text-cyan-400 hover:border-cyan-400/40 transition-all duration-300 interactive group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <social.icon size={24} className="group-hover:scale-110 transition-transform duration-300" />
+              <social.icon size={24} className="group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
             </a>
           ))}
         </div>

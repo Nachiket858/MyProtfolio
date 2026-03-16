@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or private paths (none currently, placeholder)
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://nachiket.kodeneurons.tech/sitemap.xml
+
+# Crawl delay for polite bots
+Crawl-delay: 10

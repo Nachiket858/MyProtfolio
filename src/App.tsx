@@ -13,7 +13,7 @@ import Chatbot from './components/Chatbot';
 function App() {
   useEffect(() => {
     // Update document title
-    document.title = 'Nachiket Shinde';
+    document.title = 'Nachiket Shinde | AI Developer & ML Engineer';
 
     // Add smooth scrolling behavior
     document.documentElement.style.scrollBehavior = 'smooth';

@@ -42,7 +42,7 @@ const GlitchText: React.FC<GlitchTextProps> = ({ text, className = '' }) => {
   }, [text]);
 
   return (
-    <div className={`relative ${className}`}>
+    <span className={`relative ${className}`}>
       <span
         className={`${isGlitching ? 'animate-pulse text-red-500' : ''} transition-colors duration-100`}
         style={{
@@ -53,7 +53,7 @@ const GlitchText: React.FC<GlitchTextProps> = ({ text, className = '' }) => {
       >
         {displayText}
       </span>
-    </div>
+    </span>
   );
 };
 
