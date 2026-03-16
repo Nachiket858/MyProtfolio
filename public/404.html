@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page Not Found | Nachiket Shinde</title>
+    <meta name="robots" content="noindex, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        background: #000;
+        color: #fff;
+        font-family: 'Courier New', monospace;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Particle canvas */
+      canvas {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      /* Ambient blobs */
+      .blob {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.08;
+        animation: pulse 4s ease-in-out infinite;
+        pointer-events: none;
+      }
+      .blob-1 { width: 400px; height: 400px; background: #22d3ee; top: 10%; left: 5%; animation-delay: 0s; }
+      .blob-2 { width: 500px; height: 500px; background: #a855f7; bottom: 10%; right: 5%; animation-delay: 1.5s; }
+      .blob-3 { width: 300px; height: 300px; background: #ec4899; top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 3s; }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.08; }
+        50% { transform: scale(1.15); opacity: 0.12; }
+      }
+
+      /* Main content */
+      .container {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        padding: 2rem;
+        max-width: 700px;
+      }
+
+      /* 404 glitch number */
+      .glitch-wrapper {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+      }
+
+      .glitch {
+        font-size: clamp(7rem, 20vw, 12rem);
+        font-weight: 900;
+        background: linear-gradient(135deg, #22d3ee, #a855f7, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+        position: relative;
+        animation: flicker 5s infinite;
+      }
+
+      .glitch::before,
+      .glitch::after {
+        content: '404';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #22d3ee, #a855f7, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .glitch::before {
+        animation: glitch-1 3s infinite;
+        clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+      }
+      .glitch::after {
+        animation: glitch-2 3s infinite;
+        clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+      }
+
+      @keyframes glitch-1 {
+        0%, 90%, 100% { transform: translate(0); opacity: 0; }
+        92% { transform: translate(-4px, 2px); opacity: 0.7; filter: hue-rotate(90deg); }
+        94% { transform: translate(4px, -2px); opacity: 0.7; }
+        96% { transform: translate(-2px, 0); opacity: 0.7; }
+      }
+      @keyframes glitch-2 {
+        0%, 90%, 100% { transform: translate(0); opacity: 0; }
+        93% { transform: translate(4px, -2px); opacity: 0.7; filter: hue-rotate(-90deg); }
+        95% { transform: translate(-4px, 2px); opacity: 0.7; }
+        97% { transform: translate(2px, 0); opacity: 0.7; }
+      }
+      @keyframes flicker {
+        0%, 95%, 100% { opacity: 1; }
+        96% { opacity: 0.85; }
+        97% { opacity: 1; }
+        98% { opacity: 0.9; }
+      }
+
+      /* Status line */
+      .status-line {
+        font-size: 0.75rem;
+        color: #22d3ee;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fade-up 0.6s 0.3s forwards;
+      }
+
+      /* Heading */
+      h1 {
+        font-size: clamp(1.4rem, 4vw, 2rem);
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 1rem;
+        opacity: 0;
+        animation: fade-up 0.6s 0.5s forwards;
+      }
+
+      p {
+        color: #9ca3af;
+        font-size: 1rem;
+        line-height: 1.7;
+        max-width: 480px;
+        margin: 0 auto 2.5rem;
+        font-family: Arial, sans-serif;
+        opacity: 0;
+        animation: fade-up 0.6s 0.7s forwards;
+      }
+
+      /* Terminal block */
+      .terminal {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(34,211,238,0.2);
+        border-radius: 10px;
+        padding: 1rem 1.5rem;
+        text-align: left;
+        margin-bottom: 2.5rem;
+        font-size: 0.85rem;
+        opacity: 0;
+        animation: fade-up 0.6s 0.9s forwards;
+      }
+      .terminal .line { color: #6b7280; margin-bottom: 0.3rem; }
+      .terminal .line span.prompt { color: #22d3ee; }
+      .terminal .line span.cmd { color: #a855f7; }
+      .terminal .line span.err { color: #f87171; }
+      .terminal .line span.ok { color: #34d399; }
+      .cursor {
+        display: inline-block;
+        width: 8px;
+        height: 14px;
+        background: #22d3ee;
+        vertical-align: middle;
+        animation: blink 1s step-end infinite;
+      }
+      @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+      /* Buttons */
+      .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        opacity: 0;
+        animation: fade-up 0.6s 1.1s forwards;
+      }
+
+      .btn-primary {
+        padding: 0.85rem 2rem;
+        background: linear-gradient(135deg, #22d3ee, #a855f7);
+        color: #000;
+        font-weight: 700;
+        font-size: 0.95rem;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 30px rgba(168,85,247,0.4);
+      }
+
+      .btn-secondary {
+        padding: 0.85rem 2rem;
+        background: transparent;
+        color: #9ca3af;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: 1px solid rgba(34,211,238,0.25);
+        border-radius: 50px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color 0.2s, border-color 0.2s, transform 0.2s;
+        font-family: 'Courier New', monospace;
+      }
+      .btn-secondary:hover {
+        color: #22d3ee;
+        border-color: rgba(34,211,238,0.5);
+        transform: translateY(-2px);
+      }
+
+      @keyframes fade-up {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Scanline overlay */
+      .scanlines {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 5;
+        background: repeating-linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 3px,
+          rgba(0,0,0,0.03) 3px,
+          rgba(0,0,0,0.03) 4px
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="particles"></canvas>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="scanlines"></div>
+
+    <div class="container">
+      <div class="glitch-wrapper">
+        <div class="glitch">404</div>
+      </div>
+
+      <div class="status-line">// ERROR: PAGE_NOT_FOUND</div>
+
+      <h1>Lost in the Matrix?</h1>
+
+      <p>The page you're looking for doesn't exist or has been moved. Maybe it got eaten by a rogue neural network.</p>
+
+      <div class="terminal">
+        <div class="line"><span class="prompt">~</span> <span class="cmd">GET</span> <span style="color:#fbbf24">/this-page</span></div>
+        <div class="line"><span class="err">✗ 404 Not Found</span> — resource does not exist</div>
+        <div class="line"><span class="ok">✓ Suggested fix:</span> navigate back to <span style="color:#22d3ee">nachiket.kodeneurons.tech</span></div>
+        <div class="line"><span class="prompt">~</span> <span class="cursor"></span></div>
+      </div>
+
+      <div class="btn-group">
+        <a href="/" class="btn-primary">
+          ← Back to Home
+        </a>
+        <a href="/#projects" class="btn-secondary">
+          View Projects
+        </a>
+      </div>
+    </div>
+
+    <script>
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      for (let i = 0; i < 60; i++) {
+        particles.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          r: Math.random() * 1.5 + 0.5,
+          dx: (Math.random() - 0.5) * 0.4,
+          dy: (Math.random() - 0.5) * 0.4,
+          alpha: Math.random() * 0.5 + 0.1,
+          color: Math.random() > 0.5 ? '34,211,238' : '168,85,247',
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.color},${p.alpha})`;
+          ctx.fill();
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+    </script>
+  </body>
+</html>
