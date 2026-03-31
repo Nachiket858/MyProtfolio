@@ -1,4 +1,4 @@
-import { Brain, Briefcase, ExternalLink, Github, Linkedin, Mail, Sparkles, Star, Youtube } from 'lucide-react';
+import { Brain, ExternalLink, Github, Linkedin, Mail, Sparkles, Youtube } from 'lucide-react';
 
 type Project = {
   id: number;
@@ -7,14 +7,6 @@ type Project = {
   tags: string[];
   youtube?: string[];
   github: string[];
-};
-
-type ShowcaseProject = {
-  title: string;
-  summary: string;
-  stack: string;
-  github?: string;
-  live?: string;
 };
 
 const featuredProjects: Project[] = [
@@ -47,7 +39,10 @@ const featuredProjects: Project[] = [
     title: 'AI Plant / Fruit Disease Detection',
     summary: 'Plant-health intelligence using image-based disease analysis for faster agricultural decisions.',
     tags: ['Agri AI', 'Image Classification', 'Deep Learning'],
-    youtube: ['https://www.youtube.com/watch?v=p_WkziavNqo', 'https://www.youtube.com/watch?v=tB2kynu3tK4'],
+    youtube: [
+      'https://www.youtube.com/watch?v=p_WkziavNqo',
+      'https://www.youtube.com/watch?v=tB2kynu3tK4',
+    ],
     github: [
       'https://github.com/Nachiket858/Plant_disease_detection',
       'https://github.com/Nachiket858/VrukshaDarshan-A-Plant-Identification-Tool-Using-AI',
@@ -67,7 +62,10 @@ const featuredProjects: Project[] = [
     summary: 'RAG-based chatbot for accurate, contextual college query answering with retrieval pipelines.',
     tags: ['RAG', 'LangGraph', 'Chatbot'],
     youtube: ['https://www.youtube.com/watch?v=9ohnjpR81SI'],
-    github: ['https://github.com/Nachiket858/LangGraph-Chatbot', 'https://github.com/Nachiket858/SIH-2025-Agnostoic-Chatbot'],
+    github: [
+      'https://github.com/Nachiket858/LangGraph-Chatbot',
+      'https://github.com/Nachiket858/SIH-2025-Agnostoic-Chatbot',
+    ],
   },
   {
     id: 7,
@@ -143,28 +141,6 @@ const featuredProjects: Project[] = [
   },
 ];
 
-const showcaseProjects: ShowcaseProject[] = [
-  {
-    title: 'Sentify',
-    summary: 'Real-time emotion detection with activity suggestions using DeepFace + Gemini.',
-    stack: 'Flask, DeepFace, Gemini API, JavaScript',
-    github: 'https://github.com/Nachiket858/Project-Sentify---Emotion-Detection-and-Activity-Suggestion',
-  },
-  {
-    title: 'PyCodeML',
-    summary: 'Python package to automate training, tuning, and evaluation for classical ML models.',
-    stack: 'Python, Scikit-learn, Pandas, NumPy',
-    github: 'https://github.com/Nachiket858/PyCodeML',
-    live: 'https://pypi.org/project/pycodeml/',
-  },
-  {
-    title: 'Dream House Architecture',
-    summary: 'AI-powered 3D floor planning platform with authentication and design generation.',
-    stack: 'Flask, MongoDB, OpenAI API',
-    github: 'https://github.com/Nachiket858/Dream-house-architecture-',
-  },
-];
-
 const additionalProjects = [
   'https://github.com/Nachiket858/Traffic_risk_prediction',
   'https://github.com/Nachiket858/Unified_Sign_Language',
@@ -173,147 +149,86 @@ const additionalProjects = [
   'https://github.com/Nachiket858/Smart-Traffic-Management-System',
 ];
 
-const skillGroups = [
-  { title: 'AI & ML', points: ['Machine Learning', 'Deep Learning', 'NLP', 'Computer Vision', 'Model Deployment'] },
-  { title: 'GenAI Stack', points: ['LangChain', 'LangGraph', 'RAG', 'Prompt Engineering', 'Gemini / LLM APIs'] },
-  { title: 'Backend & Data', points: ['Python', 'Flask', 'REST APIs', 'MongoDB', 'SQL'] },
-  { title: 'Frontend & Product', points: ['React', 'TypeScript', 'Tailwind CSS', 'UX-first UI', 'SEO basics'] },
-];
-
 function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="blob blob-cyan" />
-        <div className="blob blob-violet" />
-      </div>
-
-      <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur">
         <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
           <a href="#home" className="flex items-center gap-2 text-sm font-semibold tracking-wide text-cyan-300">
             <Brain className="h-5 w-5" aria-hidden="true" />
             Nachiket Shinde · AI Developer
           </a>
-          <div className="hidden items-center gap-6 text-sm md:flex">
-            {['about', 'skills', 'projects', 'contact'].map((item) => (
-              <a key={item} href={`#${item}`} className="text-slate-300 transition hover:text-cyan-300">
-                {item[0].toUpperCase() + item.slice(1)}
-              </a>
-            ))}
+          <div className="hidden items-center gap-5 text-sm md:flex">
+            <a href="#about" className="text-slate-300 hover:text-cyan-300">About</a>
+            <a href="#projects" className="text-slate-300 hover:text-cyan-300">Projects</a>
+            <a href="#contact" className="text-slate-300 hover:text-cyan-300">Contact</a>
           </div>
         </nav>
       </header>
 
       <main>
-        <section id="home" className="relative border-b border-slate-800">
-          <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-20 sm:px-6 md:grid-cols-2 md:py-28">
-            <div className="fade-up">
-              <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
-                <Sparkles className="h-3.5 w-3.5" /> Premium AI Portfolio
+        <section id="home" className="border-b border-slate-800">
+          <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 py-20 sm:px-6 md:grid-cols-2 md:py-28">
+            <div>
+              <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs font-medium uppercase tracking-wider text-cyan-200">
+                <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                AI • ML • Generative Systems
               </p>
-              <h1 className="text-4xl font-extrabold leading-tight text-white sm:text-5xl md:text-6xl">
-                I build production-ready AI products with clean UX and measurable impact.
+              <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl">
+                Clean, modern portfolio for an AI developer building useful products.
               </h1>
               <p className="mt-6 max-w-xl text-base leading-7 text-slate-300">
-                This portfolio keeps all your existing project depth and adds a premium design language: refined hierarchy,
-                smooth animations, strong visual storytelling, and SEO-ready structure for recruiters, clients, and teams.
+                I design and ship practical AI applications across computer vision, chatbots, predictive modeling,
+                and automation. This redesigned portfolio highlights my work with strong structure, clear navigation,
+                and SEO-first content.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#projects" className="rounded-xl bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:bg-cyan-300">
-                  Explore All Projects
+                <a href="#projects" className="rounded-lg bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-300">
+                  Explore Projects
                 </a>
-                <a href="https://github.com/Nachiket858" target="_blank" rel="noreferrer" className="rounded-xl border border-slate-700 bg-slate-900/70 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-300 hover:text-cyan-200">
-                  GitHub Profile
+                <a href="#contact" className="rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-200 hover:border-cyan-300 hover:text-cyan-200">
+                  Let&apos;s Collaborate
                 </a>
               </div>
             </div>
-
-            <div className="fade-up glass-card p-6" style={{ animationDelay: '120ms' }}>
-              <h2 className="text-xl font-bold text-white">At a glance</h2>
-              <div className="mt-5 grid grid-cols-2 gap-4">
-                {[
-                  { label: 'AI Projects', value: '20+' },
-                  { label: 'Mapped Demos', value: '15' },
-                  { label: 'Core Domains', value: 'CV + NLP' },
-                  { label: 'Focus', value: 'GenAI Apps' },
-                ].map((card) => (
-                  <div key={card.label} className="rounded-lg border border-slate-700 bg-slate-900/70 p-4">
-                    <p className="text-2xl font-bold text-cyan-300">{card.value}</p>
-                    <p className="mt-1 text-xs uppercase tracking-wide text-slate-400">{card.label}</p>
-                  </div>
-                ))}
-              </div>
-              <ul className="mt-6 space-y-3 text-sm text-slate-300">
-                <li>• End-to-end: model + API + user-facing interface</li>
-                <li>• Problem-solving with production mindset</li>
-                <li>• Clear communication through demos and code</li>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+              <h2 className="text-lg font-semibold text-white">What I build</h2>
+              <ul className="mt-4 space-y-3 text-sm text-slate-300">
+                <li>• AI chatbots and RAG systems for support and advisory workflows</li>
+                <li>• Computer vision products for attendance, voting, and disease detection</li>
+                <li>• Predictive ML systems for finance, risk, and smart classification</li>
+                <li>• End-to-end productization with Python, Flask, and modern front-end UX</li>
               </ul>
             </div>
           </div>
         </section>
 
         <section id="about" className="border-b border-slate-800">
-          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-            <h2 className="section-title">About</h2>
-            <p className="mt-5 max-w-4xl leading-7 text-slate-300">
-              I&apos;m Nachiket Shinde, an AI developer focused on practical systems that solve real problems in healthcare,
-              agriculture, education, civic-tech, and finance. I combine machine learning engineering with product design
-              thinking to deliver usable, performant, and business-ready software.
+          <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
+            <h2 className="text-2xl font-bold text-white sm:text-3xl">About Me</h2>
+            <p className="mt-5 max-w-4xl text-slate-300 leading-7">
+              I&apos;m Nachiket Shinde, an AI developer focused on building real-world applications instead of demo-only models.
+              My work combines machine learning engineering, API integration, and product-minded interface design. I prioritize
+              clarity, speed, and measurable utility in every project.
             </p>
-
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {[
-                'GSSoC Contributor (2025)',
-                'NPTEL Star (IIT Madras recognized)',
-                'SIH Participant & AI Product Builder',
-              ].map((point) => (
-                <div key={point} className="glass-card rounded-xl p-4 text-sm text-slate-200">
-                  <Star className="mb-2 h-4 w-4 text-cyan-300" />
-                  {point}
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
-        <section id="skills" className="border-b border-slate-800">
-          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-            <h2 className="section-title">Skills & Technology</h2>
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
-              {skillGroups.map((group, index) => (
-                <article key={group.title} className="glass-card rounded-xl p-5 fade-up" style={{ animationDelay: `${index * 80}ms` }}>
-                  <h3 className="text-lg font-semibold text-white">{group.title}</h3>
-                  <ul className="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
-                    {group.points.map((skill) => (
-                      <li key={skill} className="rounded-md border border-slate-700 bg-slate-900/60 px-3 py-2">
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="projects" className="border-b border-slate-800">
-          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-            <h2 className="section-title">Project Mapping (YouTube ↔ GitHub)</h2>
-            <p className="mt-3 text-slate-300">All your mapped projects are preserved and presented in a clean premium card layout.</p>
+        <section id="projects">
+          <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
+            <h2 className="text-2xl font-bold text-white sm:text-3xl">Featured Project Mapping (YouTube ↔ GitHub)</h2>
+            <p className="mt-3 text-slate-300">15 showcased AI projects with direct source links and demo/video references.</p>
 
             <div className="mt-8 grid gap-5 md:grid-cols-2">
               {featuredProjects.map((project) => (
-                <article key={project.id} className="project-card">
-                  <div className="mb-4 flex items-center justify-between gap-3">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300">Project {project.id}</p>
-                    <Briefcase className="h-4 w-4 text-slate-400" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white">{project.title}</h3>
+                <article key={project.id} className="rounded-xl border border-slate-800 bg-slate-900/70 p-5 shadow-sm">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-cyan-300">Project {project.id}</p>
+                  <h3 className="mt-2 text-lg font-semibold text-white">{project.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-slate-300">{project.summary}</p>
 
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
-                      <span key={tag} className="rounded-md border border-slate-700 bg-slate-900/70 px-2 py-1 text-xs text-slate-300">
+                      <span key={tag} className="rounded-md border border-slate-700 px-2 py-1 text-xs text-slate-300">
                         {tag}
                       </span>
                     ))}
@@ -321,13 +236,17 @@ function App() {
 
                   <div className="mt-5 space-y-2 text-sm">
                     {project.youtube?.map((url) => (
-                      <a key={url} href={url} target="_blank" rel="noreferrer" className="project-link text-red-200 hover:text-red-300">
-                        <Youtube className="h-4 w-4" /> YouTube Demo <ExternalLink className="h-3.5 w-3.5" />
+                      <a key={url} href={url} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-300 hover:text-red-300">
+                        <Youtube className="h-4 w-4" aria-hidden="true" />
+                        YouTube Demo
+                        <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                       </a>
                     ))}
                     {project.github.map((url) => (
-                      <a key={url} href={url} target="_blank" rel="noreferrer" className="project-link text-cyan-200 hover:text-cyan-300">
-                        <Github className="h-4 w-4" /> GitHub Repository <ExternalLink className="h-3.5 w-3.5" />
+                      <a key={url} href={url} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-300 hover:text-cyan-300">
+                        <Github className="h-4 w-4" aria-hidden="true" />
+                        GitHub Repository
+                        <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                       </a>
                     ))}
                   </div>
@@ -335,39 +254,14 @@ function App() {
               ))}
             </div>
 
-            <div className="mt-12">
-              <h3 className="text-xl font-semibold text-white">Legacy / Existing Portfolio Highlights</h3>
-              <p className="mt-2 text-sm text-slate-300">Kept and showcased from your previous portfolio content.</p>
-              <div className="mt-4 grid gap-4 md:grid-cols-3">
-                {showcaseProjects.map((project) => (
-                  <article key={project.title} className="glass-card rounded-xl p-5">
-                    <h4 className="text-lg font-semibold text-white">{project.title}</h4>
-                    <p className="mt-2 text-sm text-slate-300">{project.summary}</p>
-                    <p className="mt-3 text-xs text-slate-400">{project.stack}</p>
-                    <div className="mt-4 flex flex-wrap gap-3 text-sm">
-                      {project.github && (
-                        <a href={project.github} target="_blank" rel="noreferrer" className="project-link text-cyan-200 hover:text-cyan-300">
-                          <Github className="h-4 w-4" /> GitHub
-                        </a>
-                      )}
-                      {project.live && (
-                        <a href={project.live} target="_blank" rel="noreferrer" className="project-link text-emerald-200 hover:text-emerald-300">
-                          <ExternalLink className="h-4 w-4" /> Live
-                        </a>
-                      )}
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
-
             <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900/70 p-6">
-              <h3 className="text-lg font-semibold text-white">Additional GitHub Projects (No YouTube Yet)</h3>
+              <h3 className="text-lg font-semibold text-white">Additional GitHub Projects</h3>
               <ul className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
                 {additionalProjects.map((url) => (
                   <li key={url}>
-                    <a href={url} target="_blank" rel="noreferrer" className="project-link text-slate-200 hover:text-cyan-300">
-                      <Github className="h-4 w-4" /> {url.replace('https://github.com/Nachiket858/', '')}
+                    <a href={url} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-300 hover:text-cyan-300">
+                      <Github className="h-4 w-4" aria-hidden="true" />
+                      {url.replace('https://github.com/Nachiket858/', '')}
                     </a>
                   </li>
                 ))}
@@ -377,26 +271,21 @@ function App() {
         </section>
       </main>
 
-      <footer id="contact" className="relative">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-12 sm:px-6 md:flex-row md:items-center">
+      <footer id="contact" className="border-t border-slate-800">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-6 px-4 py-10 text-sm text-slate-300 sm:px-6 md:flex-row md:items-center">
           <div>
-            <p className="text-lg font-semibold text-white">Let&apos;s build impactful AI products together.</p>
-            <p className="mt-1 text-sm text-slate-300">
-              Email:{' '}
-              <a href="mailto:nachiketshinde2004@gmail.com" className="text-cyan-300 hover:text-cyan-200">
-                nachiketshinde2004@gmail.com
-              </a>
-            </p>
+            <p className="text-base font-semibold text-white">Let&apos;s build impactful AI products.</p>
+            <p className="mt-1">Email: <a href="mailto:nachiketshinde2004@gmail.com" className="text-cyan-300 hover:text-cyan-200">nachiketshinde2004@gmail.com</a></p>
           </div>
           <div className="flex items-center gap-4">
-            <a href="https://github.com/Nachiket858" target="_blank" rel="noreferrer" className="social-btn" aria-label="GitHub">
-              <Github className="h-5 w-5" />
+            <a href="https://github.com/Nachiket858" target="_blank" rel="noreferrer" className="text-slate-300 hover:text-cyan-300" aria-label="GitHub">
+              <Github className="h-5 w-5" aria-hidden="true" />
             </a>
-            <a href="https://www.linkedin.com/in/nachiket-shinde2004" target="_blank" rel="noreferrer" className="social-btn" aria-label="LinkedIn">
-              <Linkedin className="h-5 w-5" />
+            <a href="https://www.linkedin.com/in/nachiket-shinde2004" target="_blank" rel="noreferrer" className="text-slate-300 hover:text-cyan-300" aria-label="LinkedIn">
+              <Linkedin className="h-5 w-5" aria-hidden="true" />
             </a>
-            <a href="mailto:nachiketshinde2004@gmail.com" className="social-btn" aria-label="Email">
-              <Mail className="h-5 w-5" />
+            <a href="mailto:nachiketshinde2004@gmail.com" className="text-slate-300 hover:text-cyan-300" aria-label="Email">
+              <Mail className="h-5 w-5" aria-hidden="true" />
             </a>
           </div>
         </div>
