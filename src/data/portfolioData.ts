@@ -163,7 +163,7 @@ export const showcaseProjects: ShowcaseProject[] = [
   },
 ];
 
-export const additionalProjects = [
+export const additionalProjects: string[] = [
   'https://github.com/Nachiket858/Traffic_risk_prediction',
   'https://github.com/Nachiket858/Unified_Sign_Language',
   'https://github.com/Nachiket858/skin-desease-detection',
