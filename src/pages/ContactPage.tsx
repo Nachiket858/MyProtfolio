@@ -12,11 +12,11 @@ export default function ContactPage() {
       />
 
       <section className="space-y-6">
-        <p className="section-kicker">Let’s Work Together</p>
+        <p className="section-kicker">Let's Work Together</p>
         <h1 className="section-title-light">Open to recruiter roles, client projects, and collaborations</h1>
         <p className="max-w-2xl text-slate-600">
           If you need an engineer who can build AI systems, automate operations, and deliver full-stack products quickly,
-          I’d love to connect.
+          I'd love to connect.
         </p>
 
         <div className="grid gap-6 lg:grid-cols-2">

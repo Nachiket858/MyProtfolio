@@ -160,7 +160,7 @@ export default function HomePage() {
         {[
           { icon: Briefcase, title: 'Proof of Work', text: 'GitHub repositories, demos, and deployable project references.', cta: 'Open GitHub', href: 'https://github.com/Nachiket858' },
           { icon: Rocket, title: 'Startup Mindset', text: 'I build with outcome focus: speed, reliability, and user value.', cta: 'View Branding', href: '/about' },
-          { icon: Bot, title: 'Let’s Build Together', text: 'Open to recruiter conversations, client work, and strategic collaborations.', cta: 'Contact Me', href: '/contact' },
+          { icon: Bot, title: 'Let's Build Together', text: 'Open to recruiter conversations, client work, and strategic collaborations.', cta: 'Contact Me', href: '/contact' },
         ].map((item) => (
           <article key={item.title} className="card-hover">
             <item.icon className="h-5 w-5 text-indigo-600" />
