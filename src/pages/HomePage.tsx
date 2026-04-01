@@ -6,54 +6,17 @@ import {
   Briefcase,
   Code2,
   Cpu,
-  ExternalLink,
   Github,
   Rocket,
   Sparkles,
   Workflow,
+  Youtube,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import PageMeta from '../components/PageMeta';
-
-type CaseStudy = {
-  title: string;
-  problem: string;
-  solution: string;
-  stack: string[];
-  impact: string;
-  github: string;
-  demo?: string;
-};
+import { featuredProjects } from '../data/portfolioData';
 
 const typedPhrases = ['AI Automation Engineer', 'ML Developer', 'Startup Builder'];
-
-const caseStudies: CaseStudy[] = [
-  {
-    title: 'PyCodeML — AutoML-style Python Package',
-    problem: 'Training baseline ML models manually for every dataset was slowing down experimentation.',
-    solution: 'Built a reusable Python package that automates model training, tuning, evaluation, and ranking.',
-    stack: ['Python', 'Scikit-learn', 'Pandas', 'NumPy'],
-    impact: 'Cut repetitive model setup time by ~70% and accelerated prototype delivery for multiple projects.',
-    github: 'https://github.com/Nachiket858/PyCodeML',
-    demo: 'https://pypi.org/project/pycodeml/',
-  },
-  {
-    title: 'LLM Chatbot Systems for Domain Q&A',
-    problem: 'Users needed instant answers but static FAQs failed on context and follow-up queries.',
-    solution: 'Developed LLM chatbot systems with retrieval-based context pipelines and conversational memory.',
-    stack: ['LangChain', 'LLMs', 'Flask', 'Vector Search'],
-    impact: 'Delivered faster support-like experiences with significantly reduced manual response dependency.',
-    github: 'https://github.com/Nachiket858/LangGraph-Chatbot',
-  },
-  {
-    title: 'Automation Workflows with n8n + Python',
-    problem: 'Teams were wasting hours on repetitive operational tasks and fragmented tool handoffs.',
-    solution: 'Designed event-driven workflows to automate notifications, data sync, triggers, and AI actions.',
-    stack: ['n8n', 'Python', 'APIs', 'SQL'],
-    impact: 'Reduced manual workload by up to 90% in selected repetitive flows and improved execution reliability.',
-    github: 'https://github.com/Nachiket858',
-  },
-];
 
 const capabilities = [
   {
@@ -121,11 +84,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="grid gap-4"
-          >
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="grid gap-4">
             {[
               ['40+', 'Real-world AI, web, and automation projects delivered'],
               ['Founder/Core Member', 'KodeNeurons startup — product and engineering execution'],
@@ -153,31 +112,29 @@ export default function HomePage() {
       <section className="mt-14">
         <div className="flex items-center justify-between gap-4">
           <div>
-            <p className="section-kicker">What I’ve Built</p>
-            <h2 className="section-title-light">Product-grade AI case studies</h2>
+            <p className="section-kicker">YouTube + GitHub Projects</p>
+            <h2 className="section-title-light">Featured builds with live demos</h2>
           </div>
           <a href="/projects" className="text-sm font-semibold text-blue-700 hover:text-blue-800">See all projects →</a>
         </div>
 
         <div className="mt-6 grid gap-5 lg:grid-cols-3">
-          {caseStudies.map((project) => (
-            <article key={project.title} className="case-card">
+          {featuredProjects.slice(0, 6).map((project) => (
+            <article key={project.id} className="case-card">
               <h3 className="text-lg font-bold text-slate-900">{project.title}</h3>
-              <p className="mt-3 text-sm"><span className="font-semibold text-slate-800">Problem:</span> {project.problem}</p>
-              <p className="mt-2 text-sm"><span className="font-semibold text-slate-800">Solution:</span> {project.solution}</p>
-              <p className="mt-2 text-sm"><span className="font-semibold text-emerald-700">Impact:</span> {project.impact}</p>
+              <p className="mt-2 text-sm">{project.summary}</p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {project.stack.map((item) => <span key={item} className="chip-muted">{item}</span>)}
+                {project.tags.slice(0, 3).map((item) => <span key={item} className="chip-muted">{item}</span>)}
               </div>
-              <div className="mt-5 flex gap-3 text-sm font-semibold">
-                <a href={project.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-slate-700 hover:text-blue-700">
-                  <Github className="h-4 w-4" /> Code
-                </a>
-                {project.demo ? (
-                  <a href={project.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-slate-700 hover:text-blue-700">
-                    <ExternalLink className="h-4 w-4" /> Live
+              <div className="mt-4 flex gap-3 text-sm font-semibold">
+                {project.youtube?.[0] ? (
+                  <a href={project.youtube[0]} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-red-600 hover:text-red-700">
+                    <Youtube className="h-4 w-4" /> Demo
                   </a>
                 ) : null}
+                <a href={project.github[0]} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-slate-700 hover:text-blue-700">
+                  <Github className="h-4 w-4" /> GitHub
+                </a>
               </div>
             </article>
           ))}
@@ -203,7 +160,7 @@ export default function HomePage() {
         {[
           { icon: Briefcase, title: 'Proof of Work', text: 'GitHub repositories, demos, and deployable project references.', cta: 'Open GitHub', href: 'https://github.com/Nachiket858' },
           { icon: Rocket, title: 'Startup Mindset', text: 'I build with outcome focus: speed, reliability, and user value.', cta: 'View Branding', href: '/about' },
-          { icon: Bot, title: 'Let’s Build Together', text: 'Open to recruiter conversations, client work, and strategic collaborations.', cta: 'Contact Me', href: '/contact' },
+          { icon: Bot, title: 'Let's Build Together', text: 'Open to recruiter conversations, client work, and strategic collaborations.', cta: 'Contact Me', href: '/contact' },
         ].map((item) => (
           <article key={item.title} className="card-hover">
             <item.icon className="h-5 w-5 text-indigo-600" />

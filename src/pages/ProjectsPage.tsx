@@ -38,7 +38,7 @@ export default function ProjectsPage() {
       />
 
       <section>
-        <p className="section-kicker">What I’ve Built</p>
+        <p className="section-kicker">What I've Built</p>
         <h1 className="section-title-light">AI and automation case studies with impact</h1>
 
         <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
