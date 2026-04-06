@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export function navigate(path: string) {
   if (window.location.pathname !== path) {
@@ -19,22 +19,19 @@ export function usePathname() {
   return pathname;
 }
 
-type NavLinkProps = {
+type NavLinkProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
   to: string;
-  className?: string;
-  onClick?: () => void;
-  children: ReactNode;
 };
 
-export function NavAnchor({ to, className, onClick, children }: NavLinkProps) {
+export function NavAnchor({ to, onClick, children, ...rest }: NavLinkProps) {
   return (
     <a
       href={to}
-      className={className}
+      {...rest}
       onClick={(e) => {
         e.preventDefault();
         navigate(to);
-        onClick?.();
+        (onClick as React.MouseEventHandler<HTMLAnchorElement> | undefined)?.(e);
       }}
     >
       {children}

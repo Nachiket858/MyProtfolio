@@ -171,6 +171,148 @@ export const additionalProjects: string[] = [
   'https://github.com/Nachiket858/Smart-Traffic-Management-System',
 ];
 
+export type RepoCategory = 'Computer Vision' | 'NLP & Text AI' | 'LLM & Chatbots' | 'ML Prediction' | 'Web & Product';
+
+export type GitHubRepo = {
+  name: string;
+  displayName: string;
+  description: string;
+  url: string;
+  tags: string[];
+  category: RepoCategory;
+};
+
+export const githubRepos: GitHubRepo[] = [
+  {
+    name: 'Dream-house-architem',
+    displayName: 'Dream House Architem',
+    description: 'AI-powered platform for generating architectural designs and 3D floor plans of dream homes using OpenAI.',
+    url: 'https://github.com/Nachiket858/Dream-house-architem',
+    tags: ['Generative AI', 'Flask', 'OpenAI'],
+    category: 'Web & Product',
+  },
+  {
+    name: 'exam-proctoring-system',
+    displayName: 'Exam Proctoring System',
+    description: 'Automated online exam monitoring that uses computer vision to detect suspicious behavior in real time.',
+    url: 'https://github.com/Nachiket858/exam-proctoring-system',
+    tags: ['Computer Vision', 'OpenCV', 'Python'],
+    category: 'Computer Vision',
+  },
+  {
+    name: 'FaceAttend',
+    displayName: 'FaceAttend',
+    description: 'Face recognition-based attendance automation for secure, contactless, and effortless check-ins.',
+    url: 'https://github.com/Nachiket858/FaceAttend',
+    tags: ['Face Recognition', 'OpenCV', 'Flask'],
+    category: 'Computer Vision',
+  },
+  {
+    name: 'face_voting_system',
+    displayName: 'Face Voting System',
+    description: 'Secure digital voting platform with face recognition for fraud-proof voter authentication and MongoDB storage.',
+    url: 'https://github.com/Nachiket858/face_voting_system',
+    tags: ['Face Recognition', 'Flask', 'MongoDB'],
+    category: 'Computer Vision',
+  },
+  {
+    name: 'Fake_News_detection',
+    displayName: 'Fake News Detection',
+    description: 'NLP-based classification system to detect fake news and spam SMS messages with high accuracy.',
+    url: 'https://github.com/Nachiket858/Fake_News_detection',
+    tags: ['NLP', 'Machine Learning', 'Classification'],
+    category: 'NLP & Text AI',
+  },
+  {
+    name: 'Health_assistance',
+    displayName: 'Health Assistance',
+    description: 'AI-powered health chatbot providing personalized medical information, guidance, and lifestyle support.',
+    url: 'https://github.com/Nachiket858/Health_assistance',
+    tags: ['LLM', 'Gemini', 'Health AI'],
+    category: 'LLM & Chatbots',
+  },
+  {
+    name: 'LangGraph-Chatbot',
+    displayName: 'LangGraph Chatbot',
+    description: 'Multi-agent RAG chatbot built with LangGraph for contextual, retrieval-augmented conversations at scale.',
+    url: 'https://github.com/Nachiket858/LangGraph-Chatbot',
+    tags: ['LangGraph', 'RAG', 'LangChain'],
+    category: 'LLM & Chatbots',
+  },
+  {
+    name: 'Loan_eligibility_prediction',
+    displayName: 'Loan Eligibility Prediction',
+    description: 'ML model predicting loan eligibility based on applicant financial profiles, credit history, and employment.',
+    url: 'https://github.com/Nachiket858/Loan_eligibility_prediction',
+    tags: ['Machine Learning', 'Scikit-learn', 'FinTech'],
+    category: 'ML Prediction',
+  },
+  {
+    name: 'Plant_disease_detection',
+    displayName: 'Plant Disease Detection',
+    description: 'Deep learning model for automated plant and crop disease diagnosis from leaf images using CNN.',
+    url: 'https://github.com/Nachiket858/Plant_disease_detection',
+    tags: ['Deep Learning', 'CNN', 'AgriTech'],
+    category: 'Computer Vision',
+  },
+  {
+    name: 'Podcast_Summarizer_edited_updated',
+    displayName: 'Podcast Summarizer',
+    description: 'NLP pipeline that transcribes and summarizes podcasts into concise key takeaways using LLMs.',
+    url: 'https://github.com/Nachiket858/Podcast_Summarizer_edited_updated',
+    tags: ['NLP', 'Summarization', 'LLM'],
+    category: 'NLP & Text AI',
+  },
+  {
+    name: 'PriceCompare',
+    displayName: 'PriceCompare',
+    description: 'Intelligent price comparison engine that aggregates product pricing signals across multiple sources.',
+    url: 'https://github.com/Nachiket858/PriceCompare',
+    tags: ['Web Scraping', 'Flask', 'Automation'],
+    category: 'Web & Product',
+  },
+  {
+    name: 'Sentimet_analysis_of_review_with_price_negotiations',
+    displayName: 'Sentify: Review Sentiment & Price Negotiation',
+    description: 'Sentiment analysis system that evaluates product reviews and intelligently assists in price negotiations.',
+    url: 'https://github.com/Nachiket858/Sentimet_analysis_of_review_with_price_negotiations',
+    tags: ['NLP', 'Sentiment Analysis', 'ML'],
+    category: 'NLP & Text AI',
+  },
+  {
+    name: 'SIH-2025-Agnostoic-Chatbot',
+    displayName: 'SIH 2025 Agnostic Chatbot',
+    description: 'Hackathon-grade domain-agnostic RAG chatbot architecture built for Smart India Hackathon 2025.',
+    url: 'https://github.com/Nachiket858/SIH-2025-Agnostoic-Chatbot',
+    tags: ['RAG', 'LangGraph', 'Gemini'],
+    category: 'LLM & Chatbots',
+  },
+  {
+    name: 'Traffic_risk_prediction',
+    displayName: 'Traffic Risk Prediction',
+    description: 'ML system for predicting traffic risk levels using road conditions and environmental parameters.',
+    url: 'https://github.com/Nachiket858/Traffic_risk_prediction',
+    tags: ['Machine Learning', 'Prediction', 'Safety'],
+    category: 'ML Prediction',
+  },
+  {
+    name: 'Unified_Sign_Language',
+    displayName: 'Unified Sign Language',
+    description: 'Computer vision system for real-time sign language gesture recognition and translation for accessibility.',
+    url: 'https://github.com/Nachiket858/Unified_Sign_Language',
+    tags: ['Computer Vision', 'Sign Language', 'CNN'],
+    category: 'Computer Vision',
+  },
+  {
+    name: 'VrukshaDarshan-A-Plant-Identification-Tool-Using-AI',
+    displayName: 'VrukshaDarshan',
+    description: 'AI-powered plant identification tool using image classification to identify plant species from photos.',
+    url: 'https://github.com/Nachiket858/VrukshaDarshan-A-Plant-Identification-Tool-Using-AI',
+    tags: ['AI', 'Plant ID', 'Computer Vision'],
+    category: 'Computer Vision',
+  },
+];
+
 export const skillGroups = [
   { title: 'AI & ML', points: ['Machine Learning', 'Deep Learning', 'NLP', 'Computer Vision', 'Model Deployment'] },
   { title: 'GenAI Stack', points: ['LangChain', 'LangGraph', 'RAG', 'Prompt Engineering', 'Gemini / LLM APIs'] },
