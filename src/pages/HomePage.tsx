@@ -54,6 +54,7 @@ export default function HomePage() {
       <PageMeta
         title="Nachiket Shinde | AI Automation Engineer Portfolio"
         description="High-conversion portfolio of Nachiket Shinde, AI/ML engineer and startup builder delivering production-ready automation and ML products."
+        canonicalPath="/"
       />
 
       <section className="relative overflow-hidden rounded-3xl border border-blue-100 bg-white p-8 shadow-[0_25px_80px_-35px_rgba(59,130,246,0.45)] sm:p-12">
@@ -160,7 +161,7 @@ export default function HomePage() {
         {[
           { icon: Briefcase, title: 'Proof of Work', text: 'GitHub repositories, demos, and deployable project references.', cta: 'Open GitHub', href: 'https://github.com/Nachiket858' },
           { icon: Rocket, title: 'Startup Mindset', text: 'I build with outcome focus: speed, reliability, and user value.', cta: 'View Branding', href: '/about' },
-          { icon: Bot, title: 'Let's Build Together', text: 'Open to recruiter conversations, client work, and strategic collaborations.', cta: 'Contact Me', href: '/contact' },
+          { icon: Bot, title: "Let's Build Together", text: 'Open to recruiter conversations, client work, and strategic collaborations.', cta: 'Contact Me', href: '/contact' },
         ].map((item) => (
           <article key={item.title} className="card-hover">
             <item.icon className="h-5 w-5 text-indigo-600" />

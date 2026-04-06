@@ -13,6 +13,7 @@ export default function AboutPage() {
       <PageMeta
         title="About | Nachiket Shinde"
         description="Personal brand profile of Nachiket Shinde: AI automation engineer, ML developer, startup builder."
+        canonicalPath="/about"
       />
 
       <section className="space-y-8">
