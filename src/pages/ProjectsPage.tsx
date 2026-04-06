@@ -35,6 +35,7 @@ export default function ProjectsPage() {
       <PageMeta
         title="Projects | Nachiket Shinde"
         description="Case-study portfolio of AI and automation projects built by Nachiket Shinde with measurable impact."
+        canonicalPath="/projects"
       />
 
       <section>

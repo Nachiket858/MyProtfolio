@@ -9,6 +9,7 @@ export default function ContactPage() {
       <PageMeta
         title="Contact | Nachiket Shinde"
         description="Contact Nachiket Shinde for AI automation, ML development, and startup product collaborations."
+        canonicalPath="/contact"
       />
 
       <section className="space-y-6">
