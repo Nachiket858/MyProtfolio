@@ -49,7 +49,7 @@ export default function ContactPage() {
               className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-blue-400"
             />
             <button type="submit" className="btn-primary">Send via Web3Forms</button>
-            <p className="text-xs text-slate-500">Set <code>VITE_WEB3FORMS_ACCESS_KEY</code> in your environment for production form delivery.</p>
+            
           </form>
 
           <div className="grid gap-4">
