@@ -152,6 +152,16 @@ section {
   box-shadow: 0 20px 55px -28px rgba(13, 20, 40, 0.72);
 }
 
+.profile-photo {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid rgba(134, 168, 227, 0.34);
+  box-shadow: 0 20px 55px -30px rgba(8, 16, 29, 0.85);
+}
+
 .impact-title {
   font-family: 'Poppins', sans-serif;
   font-size: 1.05rem;
@@ -413,6 +423,10 @@ section {
 
   .impact-list li {
     grid-template-columns: 7rem 1fr;
+  }
+
+  .profile-photo {
+    max-width: 320px;
   }
 }
 

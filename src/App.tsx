@@ -85,17 +85,6 @@ const projects: Project[] = [
 
 const experience = [
   {
-    period: 'Jan 2026 - Present',
-    role: 'Intern Associate Developer',
-    company: 'Idyllic Services',
-    points: [
-      'Developing an AI-based Recruiter Automation Suite to streamline hiring workflows.',
-      'Built candidate collection, filtering, and ranking pipelines using rule-based and semantic methods.',
-      'Designed candidate scoring and shortlisting logic based on skills and role-fit criteria.',
-      'Implemented workflow automation to reduce manual intervention in recruitment operations.',
-    ],
-  },
-  {
     period: 'June 2025 - Dec 2025',
     role: 'Software Developer',
     company: 'Mountreach Solutions (Remote)',
@@ -116,12 +105,6 @@ const experience = [
 const achievements = [
   'NPTEL Discipline Star - IIT certified for academic excellence.',
   'Research paper on PyCodeML accepted at NCISET 2025.',
-];
-
-const testimonials = [
-  'Add founder quote focused on measurable process improvement.',
-  'Add client quote focused on time saved through automation.',
-  'Add team lead quote focused on ownership and delivery speed.',
 ];
 
 type ContactState = {
@@ -196,7 +179,6 @@ function App() {
                 <li className="nav-item"><a className="nav-link" href="#experience">Experience</a></li>
                 <li className="nav-item"><a className="nav-link" href="#achievements">Achievements</a></li>
                 <li className="nav-item"><a className="nav-link" href="#services">Services</a></li>
-                <li className="nav-item"><a className="nav-link" href="#testimonials">Testimonials</a></li>
                 <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
               </ul>
               <a className="btn btn-accent ms-lg-3" href="/Nachiket_Shinde_Resume.pdf" download>
@@ -213,11 +195,11 @@ function App() {
           <div className="container hero-shell">
             <div className="row g-4 align-items-center">
               <div className="col-lg-7" data-aos="fade-right">
-                <p className="hero-kicker">AI/ML Engineer | Intern Associate Developer at Idyllic Services</p>
+                <p className="hero-kicker">AI/ML Engineer | Automation Systems Builder</p>
                 <h1 className="hero-title">I Automate What Slows Teams Down.</h1>
                 <p className="hero-subtitle">
                   I build ML pipelines, LLM-powered applications, backend APIs, and intelligent automation systems that remove repetitive manual work.
-                  I currently work directly on founder-priority workflows to convert business requirements into scalable AI-driven execution.
+                  I convert business requirements into scalable, AI-driven execution with a strong automation-first mindset.
                 </p>
                 <div className="d-flex flex-wrap gap-3 mt-4">
                   <a className="btn btn-accent btn-lg" href="#projects">View Project Wins</a>
@@ -240,6 +222,13 @@ function App() {
               </div>
 
               <div className="col-lg-5" data-aos="fade-left" data-aos-delay="120">
+                <img
+                  src="/nachiket-shinde-profile.jpg"
+                  alt="Portrait of Nachiket Shinde"
+                  className="profile-photo mb-3"
+                  loading="eager"
+                  fetchPriority="high"
+                />
                 <div className="hero-impact-card">
                   <h2 className="impact-title">Why teams hire me</h2>
                   <ul className="impact-list list-unstyled mb-0">
@@ -267,7 +256,7 @@ function App() {
                     My work blends Python engineering, n8n workflow design, API integration, and prompt-controlled LLM pipelines.
                   </p>
                   <p>
-                    At Idyllic Services, I work on AI-driven recruiter automation by building candidate filtering, scoring, and shortlisting logic that reduces manual operational effort.
+                    My recent work includes AI-driven recruiter automation systems with candidate filtering, scoring, and shortlisting logic that reduce manual operational effort.
                   </p>
                   <p className="mb-0">
                     I focus on one goal: convert business requirements into reliable systems that improve speed, decision quality, and execution consistency.
@@ -384,22 +373,22 @@ function App() {
                     <div className="project-block"><h4>Solution</h4><p>{project.solution}</p></div>
                     <div className="project-block"><h4>Tech Used</h4><p>{project.tech}</p></div>
                     <div className="project-block mb-0"><h4>Impact</h4><p className="mb-0">{project.impact}</p></div>
-                    <div className="d-flex flex-wrap gap-3 mt-4">
-                      {project.github ? (
-                        <a className="text-link" href={project.github} target="_blank" rel="noreferrer">
-                          <i className="bi bi-github" aria-hidden="true" />
-                          Source Code
-                        </a>
-                      ) : (
-                        <span className="text-muted small">Code access available on request</span>
-                      )}
-                      {project.demo ? (
-                        <a className="text-link" href={project.demo} target="_blank" rel="noreferrer">
-                          <i className="bi bi-box-arrow-up-right" aria-hidden="true" />
-                          Demo / Output
-                        </a>
-                      ) : null}
-                    </div>
+                    {project.github || project.demo ? (
+                      <div className="d-flex flex-wrap gap-3 mt-4">
+                        {project.github ? (
+                          <a className="text-link" href={project.github} target="_blank" rel="noreferrer">
+                            <i className="bi bi-github" aria-hidden="true" />
+                            Source Code
+                          </a>
+                        ) : null}
+                        {project.demo ? (
+                          <a className="text-link" href={project.demo} target="_blank" rel="noreferrer">
+                            <i className="bi bi-box-arrow-up-right" aria-hidden="true" />
+                            Demo / Output
+                          </a>
+                        ) : null}
+                      </div>
+                    ) : null}
                   </article>
                 </div>
               ))}
@@ -487,27 +476,6 @@ function App() {
           </div>
         </section>
 
-        <section id="testimonials" className="portfolio-section section-muted">
-          <div className="container">
-            <div className="section-header" data-aos="fade-up">
-              <p className="section-kicker">Testimonials</p>
-              <h2 className="section-title">Social Proof Section Ready</h2>
-              <p className="section-note">Placeholder cards are included so you can quickly add verified feedback.</p>
-            </div>
-            <div className="row g-4 mt-1">
-              {testimonials.map((item, index) => (
-                <div className="col-12 col-lg-4" key={item} data-aos="fade-up" data-aos-delay={index * 80}>
-                  <article className="surface-card testimonial-card h-100">
-                    <p className="testimonial-quote">&quot;{item}&quot;</p>
-                    <h3>Placeholder Testimonial</h3>
-                    <p className="testimonial-role mb-0">Add name, role, and company</p>
-                  </article>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section id="contact" className="portfolio-section">
           <div className="container">
             <div className="section-header" data-aos="fade-up">
@@ -570,7 +538,7 @@ function App() {
 
       <footer className="portfolio-footer">
         <div className="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
-          <p className="mb-0">Copyright {new Date().getFullYear()} Nachiket Shinde | Intern Associate Developer | Automation and Backend Systems</p>
+          <p className="mb-0">Copyright {new Date().getFullYear()} Nachiket Shinde | AI/ML Engineer | Automation and Backend Systems</p>
           <div className="d-flex flex-wrap gap-3">
             <a href="https://github.com/Nachiket858" target="_blank" rel="noreferrer">GitHub</a>
             <a href="https://www.linkedin.com/in/nachiket-shinde2004" target="_blank" rel="noreferrer">LinkedIn</a>
