@@ -7,8 +7,29 @@ export const metadata = {
   title: 'Nachiket Shinde | AI Systems & Automation Builder',
   description: 'I build AI systems that actually work. Portfolio of Nachiket Shinde, AI/ML engineer focused on Python, LLM apps, APIs, workflow automation, and scalable execution.',
   keywords: 'Nachiket Shinde, AI ML Engineer, AI systems, workflow automation, Python developer, backend automation, API integration, RAG developer, LangGraph engineer',
+  openGraph: {
+    title: 'Nachiket Shinde | AI Systems & Automation Builder',
+    description: 'I build AI systems that actually work. Portfolio of Nachiket Shinde, AI/ML engineer focused on Python, LLM apps, APIs, workflow automation, and scalable execution.',
+    url: 'https://nachiket.kodeneurons.in',
+    siteName: 'Nachiket Shinde Portfolio',
+    images: [
+      {
+        url: 'https://nachiket.kodeneurons.in/nachiket-shinde-profile.jpg',
+        width: 800,
+        height: 800,
+        alt: 'Nachiket Shinde - AI/ML Engineer',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nachiket Shinde | AI Systems & Automation Builder',
+    description: 'I build AI systems that actually work. Portfolio of Nachiket Shinde, AI/ML engineer focused on Python, LLM apps, APIs, workflow automation, and scalable execution.',
+    images: ['https://nachiket.kodeneurons.in/nachiket-shinde-profile.jpg'],
+  },
 };
-
 export default function RootLayout({
   children,
 }: {
