@@ -4,6 +4,7 @@ import Particles from '../components/Particles';
 import ScrollReveal from '../components/ScrollReveal';
 
 export const metadata = {
+  metadataBase: new URL('https://nachiket.kodeneurons.in'),
   title: 'Nachiket Shinde | AI Systems & Automation Builder',
   description: 'I build AI systems that actually work. Portfolio of Nachiket Shinde, AI/ML engineer focused on Python, LLM apps, APIs, workflow automation, and scalable execution.',
   keywords: 'Nachiket Shinde, AI ML Engineer, AI systems, workflow automation, Python developer, backend automation, API integration, RAG developer, LangGraph engineer',
@@ -29,7 +30,29 @@ export const metadata = {
     description: 'I build AI systems that actually work. Portfolio of Nachiket Shinde, AI/ML engineer focused on Python, LLM apps, APIs, workflow automation, and scalable execution.',
     images: ['https://nachiket.kodeneurons.in/nachiket-shinde-profile.jpg'],
   },
+  alternates: {
+    canonical: '/',
+  },
 };
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Nachiket Shinde",
+  "url": "https://nachiket.kodeneurons.in",
+  "image": "https://nachiket.kodeneurons.in/nachiket-shinde-profile.jpg",
+  "jobTitle": "AI/ML Engineer",
+  "sameAs": [
+    "https://github.com/Nachiket858",
+    "https://www.linkedin.com/in/nachiket-shinde2004"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Self-Employed / Freelance"
+  },
+  "description": "AI systems and automation builder specializing in Python, LLM integrations, and backend workflow optimization."
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -41,6 +64,10 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ScrollReveal />
         <Particles />
         <Navigation />
