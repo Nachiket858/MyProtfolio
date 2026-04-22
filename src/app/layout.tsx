@@ -1,94 +1,221 @@
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Navigation from '../components/Navigation';
 import Particles from '../components/Particles';
 import ScrollReveal from '../components/ScrollReveal';
 
-export const metadata = {
-  metadataBase: new URL('https://nachiket.kodeneurons.in'),
-  title: 'Nachiket Shinde | AI Systems & Automation Builder',
-  description: 'I build AI systems that actually work. Portfolio of Nachiket Shinde, AI/ML engineer focused on Python, LLM apps, APIs, workflow automation, and scalable execution.',
-  keywords: 'Nachiket Shinde, AI ML Engineer, AI systems, workflow automation, Python developer, backend automation, API integration, RAG developer, LangGraph engineer',
+// ── Site-wide constants ───────────────────────────────────────────────────────
+const BASE_URL = 'https://nachiket.kodeneurons.in';
+const OG_IMAGE = `${BASE_URL}/og-image.png`;
+const PROFILE_IMAGE = `${BASE_URL}/nachiket-shinde-profile.jpg`;
+
+// ── Viewport (must NOT be inside `metadata`) ─────────────────────────────────
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#0a0a1a',
+};
+
+// ── Root metadata (inherited by all pages as fallback) ────────────────────────
+export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
+
+  // Title template — inner pages fill in the %s slot
+  title: {
+    default: 'Nachiket Shinde | AI Systems & Automation Builder',
+    template: '%s | Nachiket Shinde',
+  },
+
+  description:
+    'I build AI systems that actually work. Portfolio of Nachiket Shinde — AI/ML engineer specialising in Python, LLM apps, RAG pipelines, API integration, and scalable workflow automation.',
+
+  keywords: [
+    'Nachiket Shinde',
+    'AI ML Engineer',
+    'AI systems',
+    'workflow automation',
+    'Python developer',
+    'backend automation',
+    'API integration',
+    'RAG developer',
+    'LangGraph engineer',
+    'n8n automation',
+  ],
+
+  authors: [{ name: 'Nachiket Shinde', url: BASE_URL }],
+  creator: 'Nachiket Shinde',
+  publisher: 'Nachiket Shinde',
+
+  // Canonical — absolute URL for the root
+  alternates: {
+    canonical: BASE_URL,
+  },
+
+  // Open Graph
   openGraph: {
     title: 'Nachiket Shinde | AI Systems & Automation Builder',
-    description: 'I build AI systems that actually work. Portfolio of Nachiket Shinde, AI/ML engineer focused on Python, LLM apps, APIs, workflow automation, and scalable execution.',
-    url: 'https://nachiket.kodeneurons.in',
+    description:
+      'I build AI systems that actually work. Portfolio of Nachiket Shinde — AI/ML engineer specialising in Python, LLM apps, RAG pipelines, API integration, and scalable workflow automation.',
+    url: BASE_URL,
     siteName: 'Nachiket Shinde Portfolio',
     images: [
       {
-        url: 'https://nachiket.kodeneurons.in/nachiket-shinde-profile.jpg',
-        width: 800,
-        height: 800,
-        alt: 'Nachiket Shinde - AI/ML Engineer',
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: 'Nachiket Shinde — AI/ML Engineer & Automation Builder',
       },
     ],
     locale: 'en_US',
     type: 'website',
   },
+
+  // Twitter / X
   twitter: {
     card: 'summary_large_image',
     title: 'Nachiket Shinde | AI Systems & Automation Builder',
-    description: 'I build AI systems that actually work. Portfolio of Nachiket Shinde, AI/ML engineer focused on Python, LLM apps, APIs, workflow automation, and scalable execution.',
-    images: ['https://nachiket.kodeneurons.in/nachiket-shinde-profile.jpg'],
+    description:
+      'I build AI systems that actually work. Portfolio of Nachiket Shinde — AI/ML engineer specialising in Python, LLM apps, RAG pipelines, API integration, and scalable workflow automation.',
+    images: [OG_IMAGE],
+    creator: '@NachiketShinde',
   },
-  alternates: {
-    canonical: '/',
+
+  // Indexing — allow all crawlers by default
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+
+  // PWA manifest
+  manifest: '/manifest.json',
+
+  // Favicon
+  icons: {
+    icon: '/favicon.svg',
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Nachiket Shinde",
-  "url": "https://nachiket.kodeneurons.in",
-  "image": "https://nachiket.kodeneurons.in/nachiket-shinde-profile.jpg",
-  "jobTitle": "AI/ML Engineer",
-  "sameAs": [
-    "https://github.com/Nachiket858",
-    "https://www.linkedin.com/in/nachiket-shinde2004"
+// ── JSON-LD: Person + WebSite ─────────────────────────────────────────────────
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${BASE_URL}/#person`,
+  name: 'Nachiket Shinde',
+  alternateName: 'Nachiket Bhagaji Shinde',
+  url: BASE_URL,
+  image: {
+    '@type': 'ImageObject',
+    url: PROFILE_IMAGE,
+    width: 800,
+    height: 800,
+  },
+  jobTitle: 'AI/ML Engineer & Automation Builder',
+  description:
+    'AI systems and automation builder specialising in Python, LLM integrations, RAG pipelines, and backend workflow optimisation.',
+  email: 'mailto:nachiketshinde2004@gmail.com',
+  telephone: '+91-87660-55949',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Chhatrapati Sambhajinagar',
+    addressRegion: 'Maharashtra',
+    addressCountry: 'IN',
+  },
+  sameAs: [
+    'https://github.com/Nachiket858',
+    'https://www.linkedin.com/in/nachiket-shinde2004',
+    `${BASE_URL}/Nachiket_Shinde_Resume.pdf`,
   ],
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Self-Employed / Freelance"
-  },
-  "description": "AI systems and automation builder specializing in Python, LLM integrations, and backend workflow optimization."
+  knowsAbout: [
+    'Machine Learning',
+    'Python',
+    'LangGraph',
+    'Retrieval-Augmented Generation',
+    'n8n Automation',
+    'FastAPI',
+    'Flask',
+    'REST APIs',
+    'Qdrant',
+  ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${BASE_URL}/#website`,
+  url: BASE_URL,
+  name: 'Nachiket Shinde Portfolio',
+  description:
+    'Portfolio of Nachiket Shinde — AI/ML engineer specialising in Python, LLM apps, and automation systems.',
+  author: { '@id': `${BASE_URL}/#person` },
+  inLanguage: 'en-US',
+};
+
+// ── Root Layout ───────────────────────────────────────────────────────────────
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+        {/* Preconnect to Bootstrap Icons CDN — reduces DNS/TLS latency */}
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        />
       </head>
       <body>
+        {/* Structured Data — Person */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        {/* Structured Data — WebSite */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+
         <ScrollReveal />
         <Particles />
         <Navigation />
+
         <main>{children}</main>
+
         <footer>
           <div className="container footer-inner">
             <p className="footer-copy">
               <i className="bi bi-c-circle" /> {new Date().getFullYear()} Nachiket Shinde
-              &nbsp;&middot;&nbsp; AI/ML Engineer &nbsp;&middot;&nbsp; Automation & Backend Systems
+              &nbsp;&middot;&nbsp; AI/ML Engineer &nbsp;&middot;&nbsp; Automation &amp; Backend
+              Systems
             </p>
-            <div className="footer-links">
-              <a href="https://github.com/Nachiket858" target="_blank" rel="noreferrer">
-                <i className="bi bi-github" /> GitHub
+            <nav aria-label="Footer navigation" className="footer-links">
+              <a
+                href="https://github.com/Nachiket858"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Nachiket Shinde on GitHub"
+              >
+                <i className="bi bi-github" aria-hidden="true" /> GitHub
               </a>
-              <a href="https://www.linkedin.com/in/nachiket-shinde2004" target="_blank" rel="noreferrer">
-                <i className="bi bi-linkedin" /> LinkedIn
+              <a
+                href="https://www.linkedin.com/in/nachiket-shinde2004"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Nachiket Shinde on LinkedIn"
+              >
+                <i className="bi bi-linkedin" aria-hidden="true" /> LinkedIn
               </a>
-              <a href="mailto:nachiketshinde2004@gmail.com">
-                <i className="bi bi-envelope-fill" /> Email
+              <a href="mailto:nachiketshinde2004@gmail.com" aria-label="Email Nachiket Shinde">
+                <i className="bi bi-envelope-fill" aria-hidden="true" /> Email
               </a>
-            </div>
+            </nav>
           </div>
         </footer>
       </body>

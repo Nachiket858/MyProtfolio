@@ -1,8 +1,32 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
+
+const BASE_URL = 'https://nachiket.kodeneurons.in';
+const OG_IMAGE = `${BASE_URL}/og-image.png`;
 
 export const metadata: Metadata = {
-  title: 'Skills & Services | Nachiket Shinde',
-  description: 'Technical proficiencies spanning machine learning, LangGraph, process automation, n8n, Python, and scalable API backend systems.',
+  title: 'Skills & Services | AI/ML, Automation & Backend',
+  description:
+    'Technical proficiencies of Nachiket Shinde: machine learning, LangGraph, RAG pipelines, n8n workflow automation, Python, FastAPI, Flask, and scalable API backend systems.',
+  alternates: {
+    canonical: `${BASE_URL}/skills`,
+  },
+  openGraph: {
+    title: 'Skills & Services | Nachiket Shinde',
+    description:
+      'Technical proficiencies: ML, LangGraph, RAG, n8n automation, Python, FastAPI, Flask, and API backend systems.',
+    url: `${BASE_URL}/skills`,
+    siteName: 'Nachiket Shinde Portfolio',
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Nachiket Shinde — Skills' }],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Skills & Services | Nachiket Shinde',
+    description:
+      'Technical proficiencies: ML, LangGraph, RAG, n8n automation, Python, FastAPI, Flask, and API backend systems.',
+    images: [OG_IMAGE],
+  },
 };
 
 const SKILLS = [
@@ -19,7 +43,16 @@ const SKILLS = [
   {
     icon: 'bi-robot',
     title: 'AI & ML',
-    pills: ['Machine Learning', 'Scikit-learn', 'TensorFlow', 'NLP', 'Computer Vision', 'RAG', 'LangChain', 'LangGraph'],
+    pills: [
+      'Machine Learning',
+      'Scikit-learn',
+      'TensorFlow',
+      'NLP',
+      'Computer Vision',
+      'RAG',
+      'LangChain',
+      'LangGraph',
+    ],
   },
   {
     icon: 'bi-tools',
@@ -53,7 +86,11 @@ export default function SkillsPage() {
         <div className="container">
           <div className="aos-fade-up">
             <p className="sec-eyebrow">Skills</p>
-            <h2 className="sec-title">Focused Stack for<br />Automation & Backend Delivery</h2>
+            <h1 className="sec-title">
+              Focused Stack for
+              <br />
+              Automation &amp; Backend Delivery
+            </h1>
           </div>
           <div className="skills-grid">
             {SKILLS.map((cat, i) => (
@@ -63,12 +100,14 @@ export default function SkillsPage() {
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
                 <div className="skill-cat-title">
-                  <i className={`bi ${cat.icon} skill-cat-icon`} />
+                  <i className={`bi ${cat.icon} skill-cat-icon`} aria-hidden="true" />
                   {cat.title}
                 </div>
                 <div className="skill-pills">
-                  {cat.pills.map(p => (
-                    <span key={p} className="skill-pill">{p}</span>
+                  {cat.pills.map((p) => (
+                    <span key={p} className="skill-pill">
+                      {p}
+                    </span>
                   ))}
                 </div>
               </article>
@@ -91,7 +130,7 @@ export default function SkillsPage() {
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
                 <div className="svc-icon-wrap">
-                  <i className={`bi ${s.icon}`} />
+                  <i className={`bi ${s.icon}`} aria-hidden="true" />
                 </div>
                 <h3 className="svc-title">{s.title}</h3>
                 <p className="svc-desc">{s.desc}</p>

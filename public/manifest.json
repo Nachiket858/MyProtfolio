@@ -1,45 +1,27 @@
 {
   "name": "Nachiket Shinde | AI Developer & ML Engineer",
   "short_name": "Nachiket Shinde",
-  "description": "Personal portfolio of Nachiket Shinde — AI Developer & ML Engineer specializing in Python, Machine Learning, and Generative AI.",
+  "description": "Personal portfolio of Nachiket Shinde — AI/ML Engineer & Automation Builder specialising in Python, RAG pipelines, LangGraph, and n8n workflow automation.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
+  "background_color": "#0a0a1a",
+  "theme_color": "#0a0a1a",
   "lang": "en-US",
   "scope": "/",
   "orientation": "portrait-primary",
   "categories": ["portfolio", "technology", "developer"],
   "icons": [
     {
-      "src": "/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png",
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "/favicon-32x32.png",
-      "sizes": "32x32",
-      "type": "image/png",
+      "src": "/nachiket-shinde-profile.jpg",
+      "sizes": "800x800",
+      "type": "image/jpeg",
       "purpose": "any"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
     }
   ]
 }
