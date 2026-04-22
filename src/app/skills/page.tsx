@@ -79,9 +79,23 @@ const SERVICES = [
   },
 ];
 
+// JSON-LD: BreadcrumbList — always shows as rich result in SERP
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://nachiket.kodeneurons.in' },
+    { '@type': 'ListItem', position: 2, name: 'Skills', item: 'https://nachiket.kodeneurons.in/skills' },
+  ],
+};
+
 export default function SkillsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <section id="skills" style={{ paddingTop: '150px' }}>
         <div className="container">
           <div className="aos-fade-up">

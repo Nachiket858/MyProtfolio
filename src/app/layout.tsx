@@ -102,47 +102,83 @@ export const metadata: Metadata = {
   },
 };
 
-// ── JSON-LD: Person + WebSite ─────────────────────────────────────────────────
-const personSchema = {
+// ── JSON-LD: ProfilePage (rich-result eligible) + WebSite ───────────────────
+// ProfilePage is Google's recommended schema for personal profile/portfolio pages.
+// It IS recognised by the Rich Results Test (unlike plain Person/WebSite).
+const profilePageSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  '@id': `${BASE_URL}/#person`,
-  name: 'Nachiket Shinde',
-  alternateName: 'Nachiket Bhagaji Shinde',
+  '@type': 'ProfilePage',
+  '@id': `${BASE_URL}/#profilepage`,
   url: BASE_URL,
-  image: {
-    '@type': 'ImageObject',
-    url: PROFILE_IMAGE,
-    width: 800,
-    height: 800,
-  },
-  jobTitle: 'AI/ML Engineer & Automation Builder',
+  name: 'Nachiket Shinde — AI Systems & Automation Builder',
   description:
-    'AI systems and automation builder specialising in Python, LLM integrations, RAG pipelines, and backend workflow optimisation.',
-  email: 'mailto:nachiketshinde2004@gmail.com',
-  telephone: '+91-87660-55949',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Chhatrapati Sambhajinagar',
-    addressRegion: 'Maharashtra',
-    addressCountry: 'IN',
+    'Personal portfolio of Nachiket Shinde — AI/ML engineer specialising in Python, LLM apps, RAG pipelines, API integration, and scalable workflow automation.',
+  dateCreated: '2026-04-06T00:00:00+05:30',
+  dateModified: new Date().toISOString(),
+  inLanguage: 'en-US',
+  isPartOf: { '@id': `${BASE_URL}/#website` },
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+    ],
   },
-  sameAs: [
-    'https://github.com/Nachiket858',
-    'https://www.linkedin.com/in/nachiket-shinde2004',
-    `${BASE_URL}/Nachiket_Shinde_Resume.pdf`,
-  ],
-  knowsAbout: [
-    'Machine Learning',
-    'Python',
-    'LangGraph',
-    'Retrieval-Augmented Generation',
-    'n8n Automation',
-    'FastAPI',
-    'Flask',
-    'REST APIs',
-    'Qdrant',
-  ],
+  mainEntity: {
+    '@type': 'Person',
+    '@id': `${BASE_URL}/#person`,
+    name: 'Nachiket Shinde',
+    alternateName: 'Nachiket Bhagaji Shinde',
+    url: BASE_URL,
+    image: {
+      '@type': 'ImageObject',
+      '@id': `${BASE_URL}/#personimage`,
+      url: PROFILE_IMAGE,
+      contentUrl: PROFILE_IMAGE,
+      width: 800,
+      height: 800,
+      caption: 'Nachiket Shinde — AI/ML Engineer & Automation Builder',
+    },
+    jobTitle: 'AI/ML Engineer & Automation Builder',
+    description:
+      'AI systems and automation builder specialising in Python, LLM integrations, RAG pipelines, and backend workflow optimisation.',
+    email: 'nachiketshinde2004@gmail.com',
+    telephone: '+91-87660-55949',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Chhatrapati Sambhajinagar',
+      addressRegion: 'Maharashtra',
+      addressCountry: 'IN',
+    },
+    sameAs: [
+      'https://github.com/Nachiket858',
+      'https://www.linkedin.com/in/nachiket-shinde2004',
+      `${BASE_URL}/Nachiket_Shinde_Resume.pdf`,
+    ],
+    knowsAbout: [
+      'Machine Learning',
+      'Artificial Intelligence',
+      'Python',
+      'LangGraph',
+      'Retrieval-Augmented Generation',
+      'n8n Automation',
+      'FastAPI',
+      'Flask',
+      'REST APIs',
+      'Qdrant',
+      'Prompt Engineering',
+    ],
+    hasOccupation: {
+      '@type': 'Occupation',
+      name: 'AI/ML Engineer',
+      occupationLocation: {
+        '@type': 'Country',
+        name: 'India',
+      },
+      description:
+        'Builds AI systems, automation pipelines, RAG-based chatbots, and backend API workflows using Python, LangGraph, and n8n.',
+      skills: 'Python, Machine Learning, LangGraph, RAG, n8n, FastAPI, Flask, Qdrant',
+    },
+  },
 };
 
 const websiteSchema = {
@@ -153,8 +189,16 @@ const websiteSchema = {
   name: 'Nachiket Shinde Portfolio',
   description:
     'Portfolio of Nachiket Shinde — AI/ML engineer specialising in Python, LLM apps, and automation systems.',
-  author: { '@id': `${BASE_URL}/#person` },
+  publisher: { '@id': `${BASE_URL}/#person` },
   inLanguage: 'en-US',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${BASE_URL}/projects?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
 };
 
 // ── Root Layout ───────────────────────────────────────────────────────────────
@@ -171,12 +215,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        {/* Structured Data — Person */}
+        {/* Structured Data — ProfilePage (rich result eligible) */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
         />
-        {/* Structured Data — WebSite */}
+        {/* Structured Data — WebSite with SearchAction */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
