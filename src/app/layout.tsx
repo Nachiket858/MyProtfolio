@@ -27,19 +27,24 @@ export const metadata: Metadata = {
   },
 
   description:
-    'I build AI systems that actually work. Portfolio of Nachiket Shinde — AI/ML engineer specialising in Python, LLM apps, RAG pipelines, API integration, and scalable workflow automation.',
+    'Portfolio of Nachiket Shinde — AI/ML engineer with 19+ projects in computer vision, GenAI, NLP, face recognition, plant disease detection, RAG chatbots, sentiment analysis, and fraud detection.',
 
   keywords: [
     'Nachiket Shinde',
-    'AI ML Engineer',
-    'AI systems',
-    'workflow automation',
-    'Python developer',
-    'backend automation',
-    'API integration',
-    'RAG developer',
-    'LangGraph engineer',
-    'n8n automation',
+    'AI ML engineer India',
+    'computer vision projects',
+    'face recognition Python',
+    'plant disease detection AI',
+    'GenAI chatbot RAG',
+    'NLP sentiment analysis',
+    'LangGraph RAG pipeline',
+    'deep learning portfolio',
+    'Python AI developer',
+    'fraud detection machine learning',
+    'sign language recognition',
+    'YouTube summarizer LLM',
+    'loan eligibility prediction',
+    'SIH 2025 chatbot',
   ],
 
   authors: [{ name: 'Nachiket Shinde', url: BASE_URL }],
@@ -53,9 +58,9 @@ export const metadata: Metadata = {
 
   // Open Graph
   openGraph: {
-    title: 'Nachiket Shinde | AI Systems & Automation Builder',
+    title: 'Nachiket Shinde | AI/ML Engineer — Computer Vision, GenAI & NLP',
     description:
-      'I build AI systems that actually work. Portfolio of Nachiket Shinde — AI/ML engineer specialising in Python, LLM apps, RAG pipelines, API integration, and scalable workflow automation.',
+      '19+ AI/ML projects by Nachiket Shinde — face recognition, RAG chatbots, plant disease detection, sentiment analysis, fraud detection, and more.',
     url: BASE_URL,
     siteName: 'Nachiket Shinde Portfolio',
     images: [
@@ -73,9 +78,9 @@ export const metadata: Metadata = {
   // Twitter / X
   twitter: {
     card: 'summary_large_image',
-    title: 'Nachiket Shinde | AI Systems & Automation Builder',
+    title: 'Nachiket Shinde | AI/ML Engineer — Computer Vision, GenAI & NLP',
     description:
-      'I build AI systems that actually work. Portfolio of Nachiket Shinde — AI/ML engineer specialising in Python, LLM apps, RAG pipelines, API integration, and scalable workflow automation.',
+      '19+ AI/ML projects — face recognition, RAG chatbots, plant disease detection, sentiment analysis, fraud detection & more by Nachiket Shinde.',
     images: [OG_IMAGE],
     creator: '@NachiketShinde',
   },
@@ -110,9 +115,9 @@ const profilePageSchema = {
   '@type': 'ProfilePage',
   '@id': `${BASE_URL}/#profilepage`,
   url: BASE_URL,
-  name: 'Nachiket Shinde — AI Systems & Automation Builder',
+  name: 'Nachiket Shinde — AI/ML Engineer | Computer Vision, GenAI & NLP',
   description:
-    'Personal portfolio of Nachiket Shinde — AI/ML engineer specialising in Python, LLM apps, RAG pipelines, API integration, and scalable workflow automation.',
+    'Portfolio of Nachiket Shinde — AI/ML engineer with 19+ projects in computer vision, face recognition, GenAI chatbots, RAG pipelines, NLP, plant disease detection, and fraud detection.',
   dateCreated: '2026-04-06T00:00:00+05:30',
   dateModified: new Date().toISOString(),
   inLanguage: 'en-US',
@@ -138,9 +143,9 @@ const profilePageSchema = {
       height: 800,
       caption: 'Nachiket Shinde — AI/ML Engineer & Automation Builder',
     },
-    jobTitle: 'AI/ML Engineer & Automation Builder',
+    jobTitle: 'AI/ML Engineer | Computer Vision, GenAI & NLP Specialist',
     description:
-      'AI systems and automation builder specialising in Python, LLM integrations, RAG pipelines, and backend workflow optimisation.',
+      'AI/ML engineer with 19+ projects spanning computer vision, face recognition, GenAI, RAG chatbots, NLP, plant disease detection, sentiment analysis, and fraud detection.',
     email: 'nachiketshinde2004@gmail.com',
     telephone: '+91-87660-55949',
     address: {
@@ -157,7 +162,15 @@ const profilePageSchema = {
     knowsAbout: [
       'Machine Learning',
       'Artificial Intelligence',
+      'Computer Vision',
+      'Face Recognition',
+      'Deep Learning',
+      'Natural Language Processing',
+      'Sentiment Analysis',
+      'Generative AI',
       'Python',
+      'TensorFlow',
+      'OpenCV',
       'LangGraph',
       'Retrieval-Augmented Generation',
       'n8n Automation',
@@ -166,6 +179,9 @@ const profilePageSchema = {
       'REST APIs',
       'Qdrant',
       'Prompt Engineering',
+      'Anomaly Detection',
+      'MediaPipe',
+      'Ollama',
     ],
     hasOccupation: {
       '@type': 'Occupation',
@@ -175,8 +191,8 @@ const profilePageSchema = {
         name: 'India',
       },
       description:
-        'Builds AI systems, automation pipelines, RAG-based chatbots, and backend API workflows using Python, LangGraph, and n8n.',
-      skills: 'Python, Machine Learning, LangGraph, RAG, n8n, FastAPI, Flask, Qdrant',
+        'Builds 19+ AI/ML systems including computer vision apps, GenAI chatbots, RAG pipelines, NLP tools, plant disease detectors, fraud detection models, and automation workflows.',
+      skills: 'Python, Machine Learning, Deep Learning, Computer Vision, OpenCV, TensorFlow, LangGraph, RAG, GenAI, NLP, Flask, FastAPI, Qdrant, Ollama, MediaPipe',
     },
   },
 };

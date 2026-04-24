@@ -6,14 +6,23 @@ const OG_IMAGE = `${BASE_URL}/og-image.png`;
 export const metadata: Metadata = {
   title: 'Experience & Education | Nachiket Shinde',
   description:
-    'Professional experience and educational background of Nachiket Shinde — Software Developer at Mountreach Solutions and B.Tech CSE graduate specialising in AI/ML and backend systems.',
+    'Professional experience of Nachiket Shinde — Associate Developer Intern at Idyllic Services (AI Recruiter Automation) and Software Developer at Mountreach Solutions. B.Tech CSE graduate specialising in AI/ML.',
+  keywords: [
+    'Nachiket Shinde experience',
+    'AI developer internship',
+    'Idyllic Services intern',
+    'Mountreach Solutions developer',
+    'AI recruiter automation',
+    'machine learning engineer India',
+    'B.Tech CSE AI ML',
+  ],
   alternates: {
     canonical: `${BASE_URL}/experience`,
   },
   openGraph: {
     title: 'Experience & Education | Nachiket Shinde',
     description:
-      'Software Developer at Mountreach Solutions. B.Tech CSE (CGPA 7.53). Specialising in AI/ML pipelines and backend API development.',
+      'Associate Developer Intern at Idyllic Services (AI Recruiter Automation Suite). Previously Software Developer at Mountreach Solutions. B.Tech CSE, CGPA 7.53.',
     url: `${BASE_URL}/experience`,
     siteName: 'Nachiket Shinde Portfolio',
     images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Nachiket Shinde — Experience' }],
@@ -24,38 +33,44 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Experience & Education | Nachiket Shinde',
     description:
-      'Software Developer at Mountreach Solutions. B.Tech CSE (CGPA 7.53). Specialising in AI/ML pipelines and backend API development.',
+      'Associate Developer Intern at Idyllic Services (AI Recruiter Automation). Previously Software Developer at Mountreach Solutions. B.Tech CSE, CGPA 7.53.',
     images: [OG_IMAGE],
   },
 };
 
-// JSON-LD: BreadcrumbList — always shows as rich result in SERP
+// JSON-LD: BreadcrumbList
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://nachiket.kodeneurons.in' },
-    { '@type': 'ListItem', position: 2, name: 'Experience', item: 'https://nachiket.kodeneurons.in/experience' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+    { '@type': 'ListItem', position: 2, name: 'Experience', item: `${BASE_URL}/experience` },
   ],
 };
 
-// JSON-LD: Person with occupation + education
+// JSON-LD: Person with both occupations + education
 const experienceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  '@id': 'https://nachiket.kodeneurons.in/#person',
+  '@id': `${BASE_URL}/#person`,
   name: 'Nachiket Shinde',
   hasOccupation: [
     {
       '@type': 'Occupation',
-      name: 'Software Developer',
-      occupationLocation: {
-        '@type': 'City',
-        name: 'Remote, India',
-      },
+      name: 'Associate Developer Intern',
+      occupationLocation: { '@type': 'Organization', name: 'Idyllic Services' },
       description:
-        'Mentored students in AI/ML and full-stack application development. Guided ML pipeline implementation and supported backend API development.',
-      estimatedSalary: [],
+        'Developing an AI-based Recruiter Automation Suite. Built candidate filtering, scoring, and shortlisting pipelines using semantic and rule-based methods.',
+      startDate: '2026-01',
+    },
+    {
+      '@type': 'Occupation',
+      name: 'Software Developer',
+      occupationLocation: { '@type': 'City', name: 'Remote, India' },
+      description:
+        'Mentored students in AI/ML and full-stack development. Guided ML pipeline implementation and backend API integration.',
+      startDate: '2025-06',
+      endDate: '2025-12',
     },
   ],
   alumniOf: [
@@ -67,15 +82,35 @@ const experienceSchema = {
   ],
 };
 
-const EXPERIENCE = [
+type ExperienceItem = {
+  period: string;
+  role: string;
+  company: string;
+  badge?: string;
+  points: string[];
+};
+
+const EXPERIENCE: ExperienceItem[] = [
+  {
+    period: 'Jan 2026 – Present',
+    role: 'Associate Developer Intern',
+    company: 'Idyllic Services',
+    badge: 'Current',
+    points: [
+      'Developing an AI-based Recruiter Automation Suite to streamline end-to-end hiring workflows.',
+      'Built pipelines to collect, filter, and rank candidate profiles using rule-based and semantic methods.',
+      'Designed candidate scoring and shortlisting logic based on skills and role-fit criteria.',
+      'Implemented automation workflows to significantly reduce manual intervention in recruitment processes.',
+    ],
+  },
   {
     period: 'June 2025 – Dec 2025',
     role: 'Software Developer',
     company: 'Mountreach Solutions (Remote)',
     points: [
-      'Mentored students in AI/ML and full-stack application development.',
-      'Guided implementation of ML pipelines: preprocessing, training, and evaluation.',
-      'Supported backend API development and ML system integration.',
+      'Mentored students in building AI/ML and full-stack applications.',
+      'Guided implementation of machine learning pipelines including preprocessing, training, and evaluation.',
+      'Provided support for backend API development and integration of ML systems.',
     ],
   },
   {
@@ -83,7 +118,8 @@ const EXPERIENCE = [
     role: 'B.Tech, Computer Science & Engineering',
     company: 'CSMSS Chh. Shahu College of Engineering (DBATU)',
     points: [
-      'Built strong foundations in AI/ML, backend systems, and problem-solving. CGPA: 7.53 / 10.',
+      'Built strong foundations in AI/ML, computer vision, NLP, backend systems, and problem-solving.',
+      'CGPA: 7.53 / 10.',
     ],
   },
 ];
@@ -106,6 +142,7 @@ export default function ExperiencePage() {
         <div className="aos-fade-up">
           <p className="sec-eyebrow">Experience</p>
           <h1 className="sec-title">Execution with Real Ownership</h1>
+          <p className="sec-subtitle">Building real AI systems — from internships to mentorship to research.</p>
         </div>
 
         <div className="timeline">
@@ -117,6 +154,21 @@ export default function ExperiencePage() {
             >
               <span className="tl-period">
                 <i className="bi bi-calendar3" aria-hidden="true" /> {item.period}
+                {item.badge && (
+                  <span style={{
+                    marginLeft: '10px',
+                    background: 'linear-gradient(135deg, #6c63ff, #a78bfa)',
+                    color: '#fff',
+                    fontSize: '0.65rem',
+                    fontWeight: 700,
+                    padding: '2px 8px',
+                    borderRadius: '20px',
+                    letterSpacing: '0.05em',
+                    verticalAlign: 'middle',
+                  }}>
+                    {item.badge}
+                  </span>
+                )}
               </span>
               <h2 className="tl-role">{item.role}</h2>
               <p className="tl-company">
