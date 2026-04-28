@@ -16,6 +16,12 @@ export const viewport: Viewport = {
   themeColor: '#0a0a1a',
 };
 
+export const metadata = {
+  verification: {
+    google: "ua1hFa6ziGscLEZLX_yAR9axd-nX-lpiy28rKhP-72Q",
+  },
+};
+
 // ── Root metadata (inherited by all pages as fallback) ────────────────────────
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
