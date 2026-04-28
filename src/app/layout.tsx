@@ -9,24 +9,21 @@ const BASE_URL = 'https://nachiket.kodeneurons.in';
 const OG_IMAGE = `${BASE_URL}/og-image.png`;
 const PROFILE_IMAGE = `${BASE_URL}/nachiket-shinde-profile.jpg`;
 
-// ── Viewport (must NOT be inside `metadata`) ─────────────────────────────────
+// ── Viewport ─────────────────────────────────────────────────────────────────
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: '#0a0a1a',
 };
 
-export const metadata = {
-  verification: {
-    google: "ua1hFa6ziGscLEZLX_yAR9axd-nX-lpiy28rKhP-72Q",
-  },
-};
-
-// ── Root metadata (inherited by all pages as fallback) ────────────────────────
+// ── Metadata (FIXED + Google Verification Added) ─────────────────────────────
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
 
-  // Title template — inner pages fill in the %s slot
+  verification: {
+    google: "ua1hFa6ziGscLEZLX_yAR9axd-nX-lpiy28rKhP-72Q",
+  },
+
   title: {
     default: 'Nachiket Shinde | AI Systems & Automation Builder',
     template: '%s | Nachiket Shinde',
@@ -57,12 +54,10 @@ export const metadata: Metadata = {
   creator: 'Nachiket Shinde',
   publisher: 'Nachiket Shinde',
 
-  // Canonical — absolute URL for the root
   alternates: {
     canonical: BASE_URL,
   },
 
-  // Open Graph
   openGraph: {
     title: 'Nachiket Shinde | AI/ML Engineer — Computer Vision, GenAI & NLP',
     description:
@@ -81,7 +76,6 @@ export const metadata: Metadata = {
     type: 'website',
   },
 
-  // Twitter / X
   twitter: {
     card: 'summary_large_image',
     title: 'Nachiket Shinde | AI/ML Engineer — Computer Vision, GenAI & NLP',
@@ -91,7 +85,6 @@ export const metadata: Metadata = {
     creator: '@NachiketShinde',
   },
 
-  // Indexing — allow all crawlers by default
   robots: {
     index: true,
     follow: true,
@@ -104,18 +97,14 @@ export const metadata: Metadata = {
     },
   },
 
-  // PWA manifest
   manifest: '/manifest.json',
 
-  // Favicon
   icons: {
     icon: '/favicon.svg',
   },
 };
 
-// ── JSON-LD: ProfilePage (rich-result eligible) + WebSite ───────────────────
-// ProfilePage is Google's recommended schema for personal profile/portfolio pages.
-// It IS recognised by the Rich Results Test (unlike plain Person/WebSite).
+// ── JSON-LD Structured Data ──────────────────────────────────────────────────
 const profilePageSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',
@@ -169,37 +158,15 @@ const profilePageSchema = {
       'Machine Learning',
       'Artificial Intelligence',
       'Computer Vision',
-      'Face Recognition',
       'Deep Learning',
       'Natural Language Processing',
-      'Sentiment Analysis',
       'Generative AI',
       'Python',
       'TensorFlow',
       'OpenCV',
       'LangGraph',
-      'Retrieval-Augmented Generation',
-      'n8n Automation',
-      'FastAPI',
-      'Flask',
-      'REST APIs',
-      'Qdrant',
-      'Prompt Engineering',
-      'Anomaly Detection',
-      'MediaPipe',
-      'Ollama',
+      'RAG',
     ],
-    hasOccupation: {
-      '@type': 'Occupation',
-      name: 'AI/ML Engineer',
-      occupationLocation: {
-        '@type': 'Country',
-        name: 'India',
-      },
-      description:
-        'Builds 19+ AI/ML systems including computer vision apps, GenAI chatbots, RAG pipelines, NLP tools, plant disease detectors, fraud detection models, and automation workflows.',
-      skills: 'Python, Machine Learning, Deep Learning, Computer Vision, OpenCV, TensorFlow, LangGraph, RAG, GenAI, NLP, Flask, FastAPI, Qdrant, Ollama, MediaPipe',
-    },
   },
 };
 
@@ -228,7 +195,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* Preconnect to Bootstrap Icons CDN — reduces DNS/TLS latency */}
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
         <link
@@ -237,12 +203,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        {/* Structured Data — ProfilePage (rich result eligible) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
         />
-        {/* Structured Data — WebSite with SearchAction */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
@@ -257,31 +221,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer>
           <div className="container footer-inner">
             <p className="footer-copy">
-              <i className="bi bi-c-circle" /> {new Date().getFullYear()} Nachiket Shinde
-              &nbsp;&middot;&nbsp; AI/ML Engineer &nbsp;&middot;&nbsp; Automation &amp; Backend
-              Systems
+              © {new Date().getFullYear()} Nachiket Shinde · AI/ML Engineer · Automation & Backend Systems
             </p>
-            <nav aria-label="Footer navigation" className="footer-links">
-              <a
-                href="https://github.com/Nachiket858"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Nachiket Shinde on GitHub"
-              >
-                <i className="bi bi-github" aria-hidden="true" /> GitHub
-              </a>
-              <a
-                href="https://www.linkedin.com/in/nachiket-shinde2004"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Nachiket Shinde on LinkedIn"
-              >
-                <i className="bi bi-linkedin" aria-hidden="true" /> LinkedIn
-              </a>
-              <a href="mailto:nachiketshinde2004@gmail.com" aria-label="Email Nachiket Shinde">
-                <i className="bi bi-envelope-fill" aria-hidden="true" /> Email
-              </a>
-            </nav>
           </div>
         </footer>
       </body>
